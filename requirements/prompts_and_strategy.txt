@@ -1,0 +1,368 @@
+SMARTBREW LAB 3 — JSON PROMPTS AND PROMPTING STRATEGY
+Updated: 26 October 2026
+
+ABOUT THIS DOCUMENT
+
+This is an edited summary of the substantive requests and prompting strategy
+used for JSON structuring, requirements revision, implementation and review.
+Short status checks and repeated location corrections have been consolidated.
+The example prompts are paraphrased for clarity and are not presented as a
+verbatim transcript. The main code-generation prompt is reproduced from the
+conversation, with line wrapping normalized.
+
+The original prompt that produced ai_requirements.json is not visible in this
+conversation and is not reconstructed. Record the actual model names and
+versions from the relevant application/session records; the artifacts do not
+establish those details. Retain a full conversation export separately if the
+assignment requires the complete generation conversation.
+
+======================================================================
+PART 1 — PROMPTING STRATEGY
+======================================================================
+
+The strategy used file-based context, explicit constraints, iterative feedback
+and verification. The goal was to structure requirements into JSON fields,
+compare the original and AI versions, apply review decisions, and implement a
+bounded set of ten functionalities.
+
+1. Ask for structured JSON output.
+   A concise example request is: "Could you structure this file into JSON
+   fields?" Follow-up instructions identify assignment2_baseline.json as the
+   schema reference. The required top-level sections are user_stories,
+   requirements, product_backlog and extraction_notes. This constrains the
+   output to a consistent, machine-readable structure.
+
+2. Ground the revision in existing files.
+   The original baseline supplies the starting artifact and historical numeric
+   planning values. ai_requirements.json supplies AI suggestions. The extracted
+   comparison decisions in .comparison_rows.json guide selection, while
+   reviewed_requirements.json supplies rejected-change resolutions. The system
+   description is used to verify factual claims about stated capabilities.
+
+3. Define how decisions change the result.
+   Accept selects the corresponding AI suggestion. Modify revises it according
+   to the student's explanation. Reject uses the corresponding reviewed
+   resolution. Decisions apply to the compared capability or facet, rather than
+   automatically approving everything referenced in an entry. Earlier blank
+   decisions retained original behavior until the student supplied a decision.
+
+4. Preserve identifiers, field types and planning provenance.
+   Corresponding baseline capabilities retain their integer IDs within each
+   section. New items receive unused integer IDs. Requirement inputs, outputs,
+   precondition and postcondition remain strings. Original numeric importance
+   and estimate values are preserved; new capabilities receive null values when
+   no defensible source value exists. Undefined estimate units and measurement
+   targets are documented rather than invented.
+
+5. Review and refine through follow-up prompts.
+   Read-through requests exposed missing decisions, inaccurate source claims,
+   and conflicts between decisions and justifications. The student supplied
+   decisions for cross-path ingredient checks and transaction recording, then
+   authorized further corrections. Ingredient inspection and saved-recipe
+   deletion were retained by rejecting the AI omissions. The overflow exception
+   was identified as a proposed design change requiring verified independence.
+
+6. Use a constrained implementation prompt.
+   The main implementation request specifies JavaScript, Node.js, Express,
+   SQLite, HTML/CSS and plain frontend JavaScript, exactly ten functionalities,
+   local simulation, persistence, seed data, documentation and verification.
+   Explicit exclusions prevent unrelated features from expanding the scope.
+
+7. Verify artifacts and execution.
+   JSON checks cover parsing, matching field names/types, unique IDs, comparison
+   coverage, references and numeric planning values. Application checks include
+   syntax verification, HTTP startup requests and twelve integration tests.
+   Visual browser testing was unavailable in the session. The complete reviewed
+   requirements and the ten-function prototype have different scopes.
+
+8. Track assignment deliverables separately.
+   Reading requirements/assignmentlab identifies the need for model/version
+   documentation, main prompts and key responses, ten nontrivial functions,
+   executable code, repository hosting and documentation. This edited summary
+   supports the strategy documentation but does not replace the complete
+   generation conversation or establish missing earlier model/session details.
+
+======================================================================
+PART 2 — EDITED EXAMPLE PROMPTS
+======================================================================
+
+These examples consolidate the substantive requests from the conversation.
+Their wording has been edited to focus on the requested JSON workflow.
+
+EXAMPLE 1 — JSON STRUCTURING
+Could you structure this file into JSON fields?
+
+EXAMPLE 2 — SCHEMA REFERENCE
+Use the same JSON structure and field types as assignment2_baseline.json.
+Include user_stories, requirements, product_backlog and extraction_notes.
+
+EXAMPLE 3 — APPLY MY REQUIREMENTS REVIEW
+Read the original requirements, the AI requirements and my comparison decisions.
+Create a revised JSON artifact using my decisions. Accept means keep the AI
+suggestion, Modify means alter it according to my justification, and Reject
+means use the corresponding resolution in reviewed_requirements.json.
+
+EXAMPLE 4 — SOURCE SELECTION AND BASELINE PRESERVATION
+Start with assignment2_baseline.json. Use .comparison_rows.json to identify my
+decisions. Take accepted suggestions from ai_requirements.json and rejected
+resolutions from reviewed_requirements.json. Keep original behavior when a
+decision is blank. Preserve the baseline schema, existing IDs and numeric
+backlog planning values, and record mappings in extraction_notes.
+
+EXAMPLE 5 — RUN THE EXTRACTION
+Follow the agreed prompt and generate the revised comparison_shortlist.json
+inside requirements. Inspect the source files before editing and validate the
+resulting JSON.
+
+EXAMPLE 6 — REVIEW COMPLETENESS
+Read the completed comparison decisions and justifications. Identify remaining
+inconsistencies or missing information before moving to Task B.
+
+EXAMPLE 7 — ACCEPT CONSISTENT INGREDIENT CHECKS
+Accept the expanded availability requirement. Ingredient availability must be
+checked consistently across all ordering paths, not only manual selection.
+This improves completeness and reduces the risk of invalid orders.
+
+EXAMPLE 8 — ACCEPT TRANSACTION RECORDING
+Accept completed transaction recording so user history is captured. Record
+actual beverage customization values and include record-accuracy checks.
+
+EXAMPLE 9 — CORRECT THE TRANSACTION-RECORDING JUSTIFICATION
+Correct the explanation to acknowledge that the system description explicitly
+requires recording every completed transaction, including customization
+parameters. Keep the Accept decision and synchronize the JSON records.
+
+EXAMPLE 10 — CORRECT THE REMAINING REVIEW ISSUES
+Fix the identified inconsistencies. Retain ingredient-information display and
+saved-recipe deletion by rejecting those AI omissions. Attribute username/PIN
+details to Assignment 2, explain waste-counter reset directly, document the
+overflow exception as a proposed design change, standardize decision labels,
+and correct spelling and grammar. Update the requirements JSON consistently.
+
+EXAMPLE 11 — CHECK THE ASSIGNMENT
+Read requirements/assignmentlab and determine whether we can continue to Task B.
+
+EXAMPLE 12 — DOCUMENT THE PROCESS
+Save the prompts for later and describe the prompting strategy. Focus the
+edited examples on requests to structure the requirements into JSON fields.
+
+======================================================================
+PART 3 — MAIN CODE-GENERATION PROMPT
+======================================================================
+
+The following is the substantive implementation prompt from the conversation.
+
+Build a simple web-based SmartBrew prototype
+Use:
+- JavaScript
+- Node.js
+- Express
+- SQLite
+- HTML/CSS
+- Plain frontend JavaScript if needed
+- No React
+- No external APIs
+- Simulate payment and machine hardware behavior locally
+Implement exactly these 10 functionalities:
+1. Create account
+2. Login
+3. View beverage options
+4. Inspect nutritional values
+5. Place an order
+6. Pay for an order
+7. Enter admin mode
+8. Register waste disposal
+9. Monitor system status
+10. Update ingredient levels
+Requirements:
+- Users can register with username and PIN.
+- Usernames must be unique.
+- Users can log in and log out.
+- Invalid credentials must be rejected.
+- Beverage options must show name and price.
+- Each beverage must have nutritional information.
+- Logged-in users can place an order.
+- Payment must be simulated locally.
+- Successful payment should reduce ingredient levels and increase waste.
+- Orders must be blocked if required ingredients are unavailable.
+- Admin access must require separate authentication.
+- Normal users must not access admin pages.
+- Admin can view ingredient levels, waste level, warnings, and machine status.
+- Admin can reset waste after disposal.
+- Admin can refill ingredients to maximum capacity.
+Use SQLite for persistence.
+Seed the database with a few beverages such as:
+- Espresso
+- Cappuccino
+- Latte
+- Tea
+- Hot Chocolate
+Each beverage should include:
+- price
+- nutritional information
+- required ingredients
+Create a simple, clear interface suitable for demonstrating the system to a teacher.
+Use a straightforward project structure, for example:
+- app.js or server.js
+- package.json
+- README.md
+- db/ or database initialization logic
+- views/ or templates/
+- public/ for CSS and frontend JavaScript
+Use Express for routing and server-side logic.
+Use an appropriate SQLite package for Node.js.
+Every important function/method must include documentation describing:
+- purpose
+- input parameters
+- return/output values
+Before making changes, inspect the current project directory.
+Then:
+1. Explain briefly what you will create.
+2. Implement the application.
+3. Check for obvious errors.
+4. Run tests or basic verification if possible.
+5. Give me exact commands to install dependencies and start the app.
+Do not implement features outside these 10 functionalities.
+Do not leave TODO placeholders for core functionality.
+
+======================================================================
+PART 4 — STARTUP AND TROUBLESHOOTING PROMPTS
+======================================================================
+
+The following short prompts retain their original wording:
+
+"npm.cmd install
+npm.cmd start how to start these"
+
+"so npm starts the server"
+
+The user also supplied an npm ENOENT error for:
+C:\Users\jakob\Downloads\lab3\package.json
+
+The assistant identified that npm was being run in the parent directory. The
+correct directory is C:\Users\jakob\Downloads\lab3\smartbrew-lab3.
+The documented commands are:
+
+cd C:\Users\jakob\Downloads\lab3\smartbrew-lab3
+npm.cmd install
+npm.cmd start
+
+The server is then accessed at http://localhost:3000. Keep the terminal running
+and press Ctrl+C to stop it.
+
+======================================================================
+PART 5 — REUSABLE JSON REVISION PROMPT
+======================================================================
+
+This is a consolidated prompt reflecting the final source-selection rules. It
+is an edited reusable instruction, not a claim that this exact block was used
+to produce the original AI elicitation.
+
+Read:
+- requirements/assignment2_baseline.json
+- requirements/ai_requirements.json
+- requirements/.comparison_rows.json
+- requirements/reviewed_requirements.json
+
+Create requirements/comparison_shortlist.json using the original baseline as
+the starting point and exactly the same top-level sections and field types:
+
+{
+  "user_stories": [
+    {
+      "id": 1,
+      "role": "...",
+      "goal": "...",
+      "reason": "...",
+      "original_text": "..."
+    }
+  ],
+  "requirements": [
+    {
+      "id": 1,
+      "description": "...",
+      "inputs": "...",
+      "outputs": "...",
+      "precondition": "...",
+      "postcondition": "..."
+    }
+  ],
+  "product_backlog": [
+    {
+      "id": 1,
+      "name": "...",
+      "importance": 60,
+      "estimate": 5,
+      "description": "...",
+      "how_to_demo": "..."
+    }
+  ],
+  "extraction_notes": []
+}
+
+Interpret the comparison decisions as follows:
+- Accept selects the corresponding suggestion from ai_requirements.json.
+- Modify changes the suggestion according to the student's justification.
+- Reject uses the corresponding resolution from reviewed_requirements.json.
+- A blank decision retains the original baseline behavior and is recorded as
+  undecided until clarified.
+- The latest explicit student correction takes precedence over an earlier
+  decision. If an unresolved conflict remains, record it rather than inventing
+  a decision.
+
+Apply changes consistently across requirements, stories and backlog items.
+Keep IDs for corresponding baseline items and assign unused integer IDs to
+genuinely new items. Requirement inputs, outputs, precondition and postcondition
+must be strings. Keep non-functional constraints in the requirements section,
+since that is the baseline structure. Preserve original numeric importance and
+estimate values; use null for additions without source estimates. Do not invent
+estimation units or numerical performance/usability targets.
+
+Record source mappings, decisions, unresolved issues and backlog-to-requirement
+traceability in extraction_notes. Preserve original source artifacts. Validate
+JSON syntax, field names/types, unique IDs, all 21 comparison entries, source
+references and numeric planning values. Report the output path and any issues.
+
+======================================================================
+PART 6 — KEY RESPONSE SUMMARIES AND RESULTS
+======================================================================
+
+These are summaries rather than verbatim assistant-response quotations.
+
+Requirements:
+- The assistant read the named source artifacts and used the student's
+  Accept/Reject/Modify decisions to produce revised JSON requirements.
+- The first reviewed artifact used the AI-style schema. The later
+  comparison_shortlist.json uses the original baseline's four sections.
+- The final baseline-shaped artifact contains 30 requirements, 17 user stories
+  and 18 backlog items. It records all 21 comparison decisions in its notes.
+- The two initially missing decisions were supplied and accepted. Later
+  corrections retained ingredient inspection and recipe deletion, corrected
+  source attribution and explicitly qualified the overflow proposal.
+- Schema, identifiers, source references and historical numeric backlog values
+  were checked. Original baseline and AI source files remained unchanged.
+- Measurement targets, the exact offline payment policy and other unspecified
+  details remain documented as open questions rather than fabricated values.
+
+Implementation:
+- The generated prototype uses Express, Node's built-in SQLite module,
+  HTML/CSS and plain frontend JavaScript. It uses no external APIs or real
+  payment/hardware integrations.
+- It implements account creation, login/logout, beverage browsing, nutritional
+  inspection, ordering, payment, admin access, waste disposal, machine status
+  and ingredient refills.
+- Successful simulated payment updates stock, waste and order state atomically.
+  Declined payments do not consume ingredients. Separate maintenance
+  authentication protects administrative actions.
+- Twelve integration tests passed, along with syntax and HTTP startup checks.
+  Visual browser testing was unavailable during the session.
+
+Assignment review:
+- The assignment requires model/version documentation, prompting strategy and
+  key responses for Task A; ten nontrivial implemented functions and the
+  generation conversation when fully generated for Task B; and repository,
+  function documentation and execution guidance for Task C.
+- The next step is to map the selected ten functions to the finalized
+  requirements and verify the prototype against that selected scope.
+- This edited summary does not establish missing model versions or replace the
+  full conversation export or original elicitation log.

@@ -1,0 +1,591 @@
+{
+  "user_stories": [
+    {
+      "id": 1,
+      "role": "user",
+      "goal": "create an account using a unique username and personal PIN",
+      "reason": "I can access my personal SmartBrew profile",
+      "original_text": "As an user, I want to create an account using a unique username and personal PIN, so that I can access my personal SmartBrew profile."
+    },
+    {
+      "id": 2,
+      "role": "authenticated beverage user",
+      "goal": "save and name my custom recipes, modify them later and delete recipes I no longer want",
+      "reason": "I can reuse preferred drinks and remove recipes I no longer want",
+      "original_text": "As an authenticated beverage user, I want to save and name my custom recipes, modify them later and delete recipes I no longer want, so that I can reuse preferred drinks and remove recipes I no longer want."
+    },
+    {
+      "id": 3,
+      "role": "user",
+      "goal": "log in using my username and personal PIN or a linked NFC/card",
+      "reason": "I can access my own account when authentication succeeds",
+      "original_text": "As an user, I want to log in using my username and personal PIN or a linked NFC/card, so that I can access my own account when authentication succeeds."
+    },
+    {
+      "id": 4,
+      "role": "user",
+      "goal": "browse beverage categories, see prices and inspect ingredient information",
+      "reason": "I can make an informed choice about the cost and contents of my beverage",
+      "original_text": "As an user, I want to browse beverage categories, see prices and inspect ingredient information, so that I can make an informed choice about the cost and contents of my beverage."
+    },
+    {
+      "id": 5,
+      "role": "user",
+      "goal": "inspect beverage nutritional values",
+      "reason": "choose a beverage that suits my preferences",
+      "original_text": "As an user, I want to inspect beverage nutritional values, so that I can choose a beverage that suits my preferences."
+    },
+    {
+      "id": 6,
+      "role": "user",
+      "goal": "order an available drink with consistent ingredient checks across all enabled ordering paths and preparation coordinated with payment and machine readiness",
+      "reason": "I receive my chosen beverage only when the order is valid and eligible for preparation",
+      "original_text": "As an user, I want to order an available drink with consistent ingredient checks across all enabled ordering paths and preparation coordinated with payment and machine readiness, so that I receive my chosen beverage only when the order is valid and eligible for preparation."
+    },
+    {
+      "id": 7,
+      "role": "user",
+      "goal": "confirm an order and pay its calculated amount using a supported payment method",
+      "reason": "the order can be completed",
+      "original_text": "As an user, I want to confirm an order and pay its calculated amount using a supported payment method, so that the order can be completed."
+    },
+    {
+      "id": 8,
+      "role": "maintenance technician",
+      "goal": "enter protected maintenance mode and revoke administrative access when I log out",
+      "reason": "inspect and maintain the machine using authorized controls",
+      "original_text": "As a maintenance technician, I want to enter protected maintenance mode and revoke administrative access when I log out, so that inspect and maintain the machine using authorized controls."
+    },
+    {
+      "id": 9,
+      "role": "technician",
+      "goal": "register physical waste disposal and reset the selected bin counter to zero",
+      "reason": "waste readings and disposal alerts reflect the emptied bin",
+      "original_text": "As a technician, I want to register physical waste disposal and reset the selected bin counter to zero, so that waste readings and disposal alerts reflect the emptied bin."
+    },
+    {
+      "id": 10,
+      "role": "technician",
+      "goal": "monitor system health, separate waste levels and dashboard errors, and inspect authorized diagnostic logs",
+      "reason": "I can identify maintenance needs",
+      "original_text": "As a technician, I want to monitor system health, separate waste levels and dashboard errors, and inspect authorized diagnostic logs, so that I can identify maintenance needs."
+    },
+    {
+      "id": 11,
+      "role": "technician",
+      "goal": "be able to register ingredients refill",
+      "reason": "the machine to correctly know when it needs more ingredients and if it is capable to brew a drink.",
+      "original_text": "As a technician, I want to be able to register ingredients refill, so that the machine to correctly know when it needs more ingredients and if it is capable to brew a drink."
+    },
+    {
+      "id": 12,
+      "role": "logged-in beverage user",
+      "goal": "receive personalized recommendations and score-based menu highlights using available preferences, history, time, weather and mood, even when external context is missing",
+      "reason": "find a suitable drink more easily",
+      "original_text": "As a logged-in beverage user, I want to receive personalized recommendations and score-based menu highlights using available preferences, history, time, weather and mood, even when external context is missing, so that I can find a suitable drink more easily."
+    },
+    {
+      "id": 13,
+      "role": "user",
+      "goal": "be able to receive a receipt for a completed order",
+      "reason": "have proof of purchase.",
+      "original_text": "As an user, I want to be able to receive a receipt for a completed order, so that have proof of purchase."
+    },
+    {
+      "id": 14,
+      "role": "authenticated user",
+      "goal": "view and maintain my personal beverage preferences",
+      "reason": "my saved preferences remain associated with my profile",
+      "original_text": "As an authenticated user, I want to view and maintain my personal beverage preferences, so that my saved preferences remain associated with my profile."
+    },
+    {
+      "id": 15,
+      "role": "logged-in beverage user using mood suggestions",
+      "goal": "receive a recipe suggestion informed by my facial expression without retaining my facial image",
+      "reason": "get a contextual suggestion while preserving image privacy",
+      "original_text": "As a logged-in beverage user using mood suggestions, I want to receive a recipe suggestion informed by my facial expression without retaining my facial image, so that I can get a contextual suggestion while preserving image privacy."
+    },
+    {
+      "id": 16,
+      "role": "beverage user during a connectivity outage",
+      "goal": "continue manually selecting and customizing a drink",
+      "reason": "use the machine's available local functions despite unavailable external services",
+      "original_text": "As a beverage user during a connectivity outage, I want to continue manually selecting and customizing a drink, so that I can use the machine's available local functions despite unavailable external services."
+    },
+    {
+      "id": 17,
+      "role": "identified beverage user",
+      "goal": "have every completed transaction and its actual beverage customizations recorded in my history",
+      "reason": "my previous choices can support personalized recommendations",
+      "original_text": "As an identified beverage user, I want to have every completed transaction and its actual beverage customizations recorded in my history, so that my previous choices can support personalized recommendations."
+    }
+  ],
+  "requirements": [
+    {
+      "id": 1,
+      "description": "Allow a user to create a personal SmartBrew account using a username and personal PIN; reject a username that is already taken.",
+      "inputs": "Username Personal PIN",
+      "outputs": "Account creation result Personal account on success",
+      "precondition": "The user supplies a username and personal PIN. For successful registration, the username is not already taken.",
+      "postcondition": "Successful registration creates a personal account with the supplied username and PIN credentials. A duplicate username does not create another account."
+    },
+    {
+      "id": 2,
+      "description": "Allow users to customize supported recipe parameters, including milk type, coffee strength, temperature, and syrup shots, and reflect changes in the current recipe while they interact. Allow authenticated users to save, name, modify and delete custom beverage recipes in their profile and select a saved recipe for one-touch ordering.",
+      "inputs": "Selected beverage Supported customization values Recipe name Recipe parameters Save, modify, delete or order request",
+      "outputs": "Updated current recipe Saved or updated personal recipe Order selection using the saved recipe Recipe deletion result.",
+      "precondition": "A beverage is available for customization. Supported parameter values are used. Saving or accessing personal recipes requires authentication. Modifying or ordering a saved recipe requires an existing recipe. Deletion requires an existing recipe belonging to the authenticated user.",
+      "postcondition": "The current recipe reflects the accepted customization values. Saved changes are associated with the user's profile. Selecting a saved recipe for ordering uses its stored customization values, subject to availability checks. A deleted recipe is removed from the user’s profile and cannot be selected for future orders."
+    },
+    {
+      "id": 3,
+      "description": "Allow users to log in with a username and personal PIN or an NFC/card tap and access their own profile.",
+      "inputs": "Username and personal PIN, or an associated NFC/card identifier",
+      "outputs": "Authentication result Access to the authenticated profile on success",
+      "precondition": "A matching account exists. For card authentication, the presented identifier is associated with an account.",
+      "postcondition": "Valid authentication gives access to the associated profile. Invalid authentication does not grant profile access."
+    },
+    {
+      "id": 4,
+      "description": "Provide touchscreen beverage-category browsing and display beverage options with their prices. Allow users to inspect the selected beverage ingredient information.",
+      "inputs": "Category selection; beverage selection; configured beverage list and prices. Ingredient-information inspection request and configured ingredient data.",
+      "outputs": "Beverage category and menu views with prices Ingredient information for the selected beverage.",
+      "precondition": "The beverage catalogue and prices are configured. Ingredient information is configured.",
+      "postcondition": "The selected category or beverage is displayed with its price and ordering option. Users can inspect beverage ingredients before ordering."
+    },
+    {
+      "id": 5,
+      "description": "Allow inspection of the nutritional information for a selected beverage.",
+      "inputs": "Beverage selection; Nutrition inspection request",
+      "outputs": "Nutritional information for the selected beverage",
+      "precondition": "The selected beverage has configured nutritional information.",
+      "postcondition": "The selected beverage nutritional information is displayed."
+    },
+    {
+      "id": 6,
+      "description": "Accept an available selected recipe as an order and coordinate payment and beverage preparation for that order.",
+      "inputs": "Selected recipe Order request Payment result Machine readiness status User order confirmation Calculated payable amount",
+      "outputs": "Order outcome Preparation instruction when the order is eligible to proceed Confirmed order and calculated amount ready for payment Confirmed order and calculated amount ready for payment before eligible preparation.",
+      "precondition": "The recipe passes ingredient availability checks. Machine safety conditions allow preparation. Payment acceptance follows the agreed online or offline policy.",
+      "postcondition": "An eligible accepted order is submitted for preparation using its selected recipe. An order blocked by payment or machine safety does not start preparation. Before payment processing, the user has confirmed the order and the payable amount has been calculated."
+    },
+    {
+      "id": 7,
+      "description": "Support payment through credit/debit EMV chip and contactless cards, Apple Pay, Google Pay, and internal prepaid employee cards.",
+      "inputs": "Order payment request Presented payment method Payment processor or employee card result Confirmed order Calculated payable amount",
+      "outputs": "Payment acceptance or rejection result",
+      "precondition": "The user has confirmed the order. The amount to be paid has been calculated. An order is awaiting payment. The relevant reader and payment integration are configured.",
+      "postcondition": "The order receives the payment outcome for the method used. A rejected payment is not reported as accepted."
+    },
+    {
+      "id": 8,
+      "description": "Provide an administrative mode reserved for maintenance personnel, accessible through a physical key, NFC master card, or technician PIN.",
+      "inputs": "Physical key state, NFC master card, or technician PIN Maintenance logout request",
+      "outputs": "Maintenance authentication result Administrative interface on success",
+      "precondition": "Maintenance authentication mechanisms are configured.",
+      "postcondition": "Successful maintenance authentication grants administrative access. Unsuccessful authentication does not grant administrative access. Maintenance logout revokes administrative access; subsequent users must authenticate separately before accessing administrative controls or protected diagnostic data."
+    },
+    {
+      "id": 9,
+      "description": "Allow an authenticated maintenance technician to register physical emptying of a selected liquid-waste or coffee-ground bin and reset its waste counter to zero.",
+      "inputs": "Selected waste bin Physical emptying confirmation Disposal registration request",
+      "outputs": "Selected bin counter reset to zero Updated waste status",
+      "precondition": "The operator has administrative access. The selected waste bin has been physically emptied.",
+      "postcondition": "The selected bin counter is zero. Other bin counters remain unchanged. Waste alerts are recalculated from current levels; operation resumes only when applicable overflow and other safety checks pass."
+    },
+    {
+      "id": 10,
+      "description": "Display current machine error messages on the administrative dashboard, including grinder jams, water heater faults, and low ingredient threshold conditions. Show system health and separate liquid-waste and coffee-ground bin status to authorized maintenance personnel.",
+      "inputs": "Machine fault and low ingredient events",
+      "outputs": "Current dashboard error messages System health and separate waste-bin status.",
+      "precondition": "The machine reports an error condition. The dashboard is accessible to authorized personnel.",
+      "postcondition": "The dashboard identifies the reported error condition."
+    },
+    {
+      "id": 11,
+      "description": "Update the system's ingredient levels after ingredients have been physically refilled.",
+      "inputs": "The ingredient counter",
+      "outputs": "Ingredient counter is fileld",
+      "precondition": "Admin Access",
+      "postcondition": "System’s ingredient counter has been filled to its original value"
+    },
+    {
+      "id": 12,
+      "description": "Generate personalized recommendations for logged-in users using their locally available preferences and history, time of day, and available weather/context data. Missing external context degrades the recommendation calculation rather than disabling it. Available detected mood may inform the personalized suggestion as in the baseline.",
+      "inputs": "Available personal preferences Available order history Current time Available weather data Available beverage options Available detected mood, handled according to R15 and R22.",
+      "outputs": "Recommended drinks with calculated recommendation scores",
+      "precondition": "The user is logged in. The local recommendation calculation and beverage options remain available.",
+      "postcondition": "Recommendation scores use the authenticated user context and the specified inputs that remain available. Unavailable weather or other external context does not disable the locally available recommendation calculation. Users who are not logged in do not receive personalized recommendations. Manual ordering remains available independently of recommendation or external-service availability."
+    },
+    {
+      "id": 13,
+      "description": "Allows the consumer to receive a receipt for a successfully completed transaction through a QR code or email.",
+      "inputs": "A transaction",
+      "outputs": "A reciept",
+      "precondition": "The payment has been successfully completed.",
+      "postcondition": "A reciept generated by the system."
+    },
+    {
+      "id": 14,
+      "description": "Allow authenticated users to view and maintain their personal beverage preferences.",
+      "inputs": "Preference changes",
+      "outputs": "Current or updated preference profile",
+      "precondition": "The user is authenticated.",
+      "postcondition": "Saved preference changes belong to the authenticated user's profile."
+    },
+    {
+      "id": 15,
+      "description": "Use the embedded camera to infer facial expression or mood and incorporate the inferred cue into tailored drink recipe suggestions.",
+      "inputs": "Camera image held in memory Available beverage recipes Other available recommendation context",
+      "outputs": "Inferred mood cue Tailored recipe suggestions",
+      "precondition": "The user is logged in before receiving personalized mood-informed suggestions. The camera is available. Mood analysis operates under the agreed user permission policy.",
+      "postcondition": "A successfully inferred mood cue is supplied to the suggestion calculation. Captured facial images are handled according to R22."
+    },
+    {
+      "id": 16,
+      "description": "Reorder and highlight touchscreen menu items according to calculated recommendation scores.",
+      "inputs": "Menu items Recommendation scores",
+      "outputs": "Reordered menu with highlighted recommended items",
+      "precondition": "The user is logged in. Recommendation scores have been calculated for menu items.",
+      "postcondition": "Menu ordering and highlighting reflect the configured score presentation rule."
+    },
+    {
+      "id": 17,
+      "description": "Monitor liquid waste and coffee ground bin levels against capacity and alert maintenance personnel when disposal or emptying is required.",
+      "inputs": "Liquid waste level Coffee ground bin level Configured bin capacities and alert thresholds",
+      "outputs": "Bin capacity status Disposal or emptying alert",
+      "precondition": "Bin levels and configured capacities are available.",
+      "postcondition": "A bin reaching its configured disposal threshold produces a corresponding technician alert."
+    },
+    {
+      "id": 18,
+      "description": "Halt or block preparation operations that use, discharge into, or otherwise depend on an overflowing waste bin. Other drinks may proceed only when their preparation is verified to be independent of the affected bin and all other safety and ingredient checks pass.",
+      "inputs": "Overflow status for each monitored bin Current or requested recipe and its preparation steps Verified recipe/operation-to-bin dependency mapping Machine safety status",
+      "outputs": "Halt or block instruction for affected preparation Eligibility result for demonstrably unaffected recipes Overflow status and technician alert",
+      "precondition": "An overflow is detected in a monitored bin. Dependencies between preparation operations and waste bins are configured and verified before allowing any exception.",
+      "postcondition": "Preparation that depends on an overflowing bin does not start or continue while that overflow is active. A drink may proceed only if all of its preparation operations are verified independent of overflowing bins and all other guards pass. Unknown or unverified dependencies do not allow continued preparation. Registering disposal does not by itself override an active overflow detection or another machine fault."
+    },
+    {
+      "id": 19,
+      "description": "Record machine error events in event logs that support remote diagnostics.",
+      "inputs": "Machine error events",
+      "outputs": "Diagnostic event log entries Log access for authorized remote diagnostics when connected",
+      "precondition": "An error event has been reported.",
+      "postcondition": "The reported error is represented in the diagnostic log without retaining facial images."
+    },
+    {
+      "id": 20,
+      "description": "When the network or an external service fails, retain basic manual beverage selection and customization using locally available machine functions and data.",
+      "inputs": "Network or external service failure status Manual beverage selection and customization",
+      "outputs": "Usable manual ordering interface Available order selection",
+      "precondition": "The touchscreen, local control system, and required local menu data remain operational.",
+      "postcondition": "Users can manually select an available beverage without a functioning weather or recommendation service. Payment and preparation remain subject to the offline payment policy and machine safety conditions."
+    },
+    {
+      "id": 21,
+      "description": "Provide the specified fallback to offline card processing or cashless storage when network or external payment services fail; the permitted fallback and acceptance rules require stakeholder definition.",
+      "inputs": "Payment connectivity failure Order payment request Configured offline payment policy",
+      "outputs": "Offline payment outcome or unavailable payment indication",
+      "precondition": "The permitted offline mechanism and acceptance policy have been defined and configured.",
+      "postcondition": "The order receives an explicit outcome under the approved offline policy. A payment that has not been accepted is not represented as accepted."
+    },
+    {
+      "id": 22,
+      "description": "Process captured facial images entirely in memory and immediately discard them after mood inference; do not store them locally or transmit them to external servers.",
+      "inputs": "Facial-image buffers and camera inference result or failure.",
+      "outputs": "Mood inference output without persistent or externally transmitted facial images.",
+      "precondition": "A facial image is captured for mood analysis.",
+      "postcondition": "During a camera inference test, no captured facial image is written to persistent storage or emitted in network traffic; the inference image buffers are released or cleared immediately after the inference step completes, including failure paths."
+    },
+    {
+      "id": 23,
+      "description": "Restrict maintenance functions to authenticated maintenance personnel.",
+      "inputs": "Maintenance authentication, protected action requests and logout state.",
+      "outputs": "Allowed or denied maintenance access.",
+      "precondition": "A protected maintenance function or diagnostic resource is requested.",
+      "postcondition": "Without valid maintenance authentication, attempts to access the dashboard or diagnostic logs and attempts to register ingredient refills or waste disposal are denied. After maintenance logout, replaying the previous session or signing in as a normal user does not restore administrative access; fresh maintenance authentication is required."
+    },
+    {
+      "id": 24,
+      "description": "Failure of network connectivity or an external service must not make basic local manual ordering unavailable.",
+      "inputs": "Network or external-service failure state and manual interaction requests.",
+      "outputs": "Available local manual ordering functions.",
+      "precondition": "Local touchscreen, control system and menu data remain operational.",
+      "postcondition": "With network connectivity disabled, and separately with weather and payment service failures injected, manual category browsing, recipe selection, and supported customization remain usable. Payment outcomes follow the defined offline policy."
+    },
+    {
+      "id": 25,
+      "description": "Provide an intuitive touchscreen interface for category browsing, nutritional inspection, and recipe customization.",
+      "inputs": "User touchscreen navigation, nutrition inspection and recipe-customization actions.",
+      "outputs": "An intuitive touchscreen interaction.",
+      "precondition": "The touchscreen interface is available.",
+      "postcondition": "Browsing, nutritional inspection and customization are supported through an intuitive touchscreen; measurable task-success criteria remain undefined."
+    },
+    {
+      "id": 26,
+      "description": "Reflect recipe customization changes and machine error messages in real time on their respective interfaces.",
+      "inputs": "Recipe-customization changes and machine error events.",
+      "outputs": "Updated current recipe and dashboard error messages.",
+      "precondition": "A supported recipe edit or machine error is reported.",
+      "postcondition": "Recipe edits and error messages update in real time; numerical response-time limits remain undefined."
+    },
+    {
+      "id": 27,
+      "description": "Prevent selection of a beverage when an ingredient it requires is depleted or below its configured minimum threshold.",
+      "inputs": "Recipe ingredient requirements Current ingredient levels Configured minimum thresholds Beverage selection request",
+      "outputs": "Allowed selection or unavailable beverage indication",
+      "precondition": "Ingredient levels and minimum thresholds are available to the system.",
+      "postcondition": "A beverage requiring a depleted or below-threshold ingredient cannot become a valid order selection."
+    },
+    {
+      "id": 28,
+      "description": "Automatically record every completed transaction, including the beverage customization parameters used, and associate it with the user's history when an authenticated user is identified.",
+      "inputs": "Completed transaction details Actual beverage customization parameters User identity when available",
+      "outputs": "Stored completed transaction record",
+      "precondition": "A transaction has reached the agreed completed state.",
+      "postcondition": "The completed transaction and its customization values are available in transaction history."
+    },
+    {
+      "id": 29,
+      "description": "Preserve the actual customization parameters in every completed transaction record.",
+      "inputs": "Completed transactions and actual executed beverage customization values.",
+      "outputs": "Accurate and complete stored transaction records.",
+      "precondition": "A transaction has reached the agreed completed state.",
+      "postcondition": "For each completed transaction in a test set covering supported customization parameters, the stored beverage and customization values match the executed order; no completed transaction in the test set lacks a record."
+    },
+    {
+      "id": 30,
+      "description": "Manual, saved-recipe and recommendation ordering paths must respect ingredient availability and bin-dependent overflow interlocks.",
+      "inputs": "Selected recipe, ingredient levels and minimum thresholds, ordering path, bin overflow state and verified recipe-to-bin dependencies.",
+      "outputs": "Consistent selection rejection or preparation eligibility across enabled ordering paths.",
+      "precondition": "Manual, saved-recipe or recommendation ordering is requested; guards apply to every enabled ordering path.",
+      "postcondition": "For each enabled path, depleted or below-threshold required ingredients reject selection. An overflowing bin blocks or halts every recipe/operation that depends on it. A verified independent recipe may proceed only when all other checks pass. Missing or unverified dependency mappings do not permit exceptions. Test both affected and independent recipes for each bin."
+    }
+  ],
+  "product_backlog": [
+    {
+      "id": 1,
+      "name": "Create account",
+      "importance": 60,
+      "estimate": 5,
+      "description": "Create personal accounts using a username and personal PIN, enforcing username uniqueness.",
+      "how_to_demo": "Register a fresh username/PIN, verify it can log in, and show that a duplicate username is rejected."
+    },
+    {
+      "id": 2,
+      "name": "Login",
+      "importance": 100,
+      "estimate": 3,
+      "description": "Allow users to log in with a username and personal PIN or an NFC/card tap and access their own profile.",
+      "how_to_demo": "Try invalid username/PIN credentials and verify rejection. Log in with valid credentials, then with a linked NFC/card and verify access to the corresponding account."
+    },
+    {
+      "id": 3,
+      "name": "Manage named saved beverages",
+      "importance": 40,
+      "estimate": 6,
+      "description": "Save and name profile-associated custom recipes, modify or delete them, and select existing saved recipes for one-touch ordering.",
+      "how_to_demo": "Save a named recipe, access it again after login, modify it and select it for one-touch ordering. Delete it and verify it no longer appears or can be selected."
+    },
+    {
+      "id": 4,
+      "name": "View beverage options",
+      "importance": 80,
+      "estimate": 2,
+      "description": "Display categories, beverage names and prices, and provide ingredient-information inspection.",
+      "how_to_demo": "Browse categories, verify beverage prices, and inspect the ingredient information for a selected beverage."
+    },
+    {
+      "id": 5,
+      "name": "Inspect nutrional value",
+      "importance": 50,
+      "estimate": 2,
+      "description": "A list of nutrional values of the drinks",
+      "how_to_demo": "Click on the nutrional value option for the beverage"
+    },
+    {
+      "id": 6,
+      "name": "Place order and coordinate preparation",
+      "importance": 100,
+      "estimate": 4,
+      "description": "Create an order from an available recipe, obtain user confirmation and calculate the amount due; coordinate accepted payment and safe machine readiness before preparation.",
+      "how_to_demo": "Place manual, saved-recipe and recommendation orders with depleted or below-threshold ingredients and verify rejection on every enabled path. Refill supplies, confirm an order and calculate the amount due. Verify preparation follows accepted payment and machine readiness, including the modified bin-dependent overflow rules."
+    },
+    {
+      "id": 7,
+      "name": "Pay for an order",
+      "importance": 100,
+      "estimate": 4,
+      "description": "Process the confirmed calculated order through EMV chip/contactless cards, Apple Pay, Google Pay or internal prepaid employee cards, reporting explicit acceptance/rejection.",
+      "how_to_demo": "Verify confirmation and calculated amount before payment; exercise supported payment methods and show accepted and rejected outcomes."
+    },
+    {
+      "id": 8,
+      "name": "Enter and leave admin mode",
+      "importance": 40,
+      "estimate": 4,
+      "description": "Protect maintenance access using a physical key, NFC master card or technician PIN, and revoke administrative access on logout.",
+      "how_to_demo": "Authenticate as maintenance personnel, access protected controls, log out, then show that the previous session and a normal user cannot access them."
+    },
+    {
+      "id": 9,
+      "name": "Register waste disposal and monitor bins",
+      "importance": 40,
+      "estimate": 2,
+      "description": "Monitor both waste bins, alert technicians, register physical disposal and reset the selected counter to zero; apply bin-dependent overflow guards.",
+      "how_to_demo": "Raise a waste threshold alert, register physical emptying and verify the selected counter resets to zero. Test affected and verified-independent recipes during overflow."
+    },
+    {
+      "id": 10,
+      "name": "Monitor system and diagnostic logs",
+      "importance": 40,
+      "estimate": 6,
+      "description": "Display current machine errors and record events for authorized remote diagnostics without facial image retention. Show separate waste-bin levels and disposal alerts.",
+      "how_to_demo": "Trigger waste alerts and sample grinder, heater and low-ingredient faults. Verify separate bin readings, dashboard messages, event entries and authenticated remote log access."
+    },
+    {
+      "id": 11,
+      "name": "Update ingredient level",
+      "importance": 40,
+      "estimate": 2,
+      "description": "A counter used to make the system aware of its current ingredient levels",
+      "how_to_demo": "Place a order and pay for it, make sure it goes through, Record the earlier counter value and the value after it. Then let a an admin reset the value back to its original value."
+    },
+    {
+      "id": 12,
+      "name": "Recommendations and personalized menu ranking",
+      "importance": 50,
+      "estimate": 9,
+      "description": "For logged-in users, calculate recommendations using preferences, history, time, available weather and permitted mood cues; reorder/highlight menu items by score and degrade gracefully when external context fails.",
+      "how_to_demo": "Use different authenticated profiles and context/mood inputs, inspect score-based ordering and highlights, then disable external context and confirm local recommendations continue. Verify facial images are neither persisted nor transmitted."
+    },
+    {
+      "id": 13,
+      "name": "Reciept",
+      "importance": 100,
+      "estimate": 4,
+      "description": "The system generates a reciept",
+      "how_to_demo": "Pay for different orders and make sure you receive a receipt with the correct information."
+    },
+    {
+      "id": 14,
+      "name": "Maintain preference profiles",
+      "importance": null,
+      "estimate": null,
+      "description": "Allow authenticated users to view and maintain their personal beverage preferences.",
+      "how_to_demo": "Save a preference change, reopen the same profile and verify persistence."
+    },
+    {
+      "id": 15,
+      "name": "Manual outage fallback",
+      "importance": null,
+      "estimate": null,
+      "description": "Keep local browsing, selection, and customization usable during network and external service failures.",
+      "how_to_demo": "Fail the network and external services separately; verify manual browsing, beverage selection and supported customization remain available."
+    },
+    {
+      "id": 16,
+      "name": "Offline payment fallback",
+      "importance": null,
+      "estimate": null,
+      "description": "Resolve the meaning of cashless storage, supported offline methods, acceptance limits, and recovery behavior; implement the agreed policy and explicit payment outcomes.",
+      "how_to_demo": "After the offline policy has been agreed, fail the payment connection and verify permitted outcomes and recovery under that policy."
+    },
+    {
+      "id": 17,
+      "name": "Ingredient availability across ordering paths",
+      "importance": null,
+      "estimate": null,
+      "description": "Connect ingredient levels and thresholds to beverage selection checks across enabled ordering paths.",
+      "how_to_demo": "For every enabled ordering path, deplete a required ingredient and lower it below the minimum threshold; verify invalid selections are rejected consistently. Restore availability and verify valid selection."
+    },
+    {
+      "id": 18,
+      "name": "Completed transaction history and record integrity",
+      "importance": null,
+      "estimate": null,
+      "description": "Automatically record every completed transaction, including the beverage customization parameters used, and associate it with the user's history when an authenticated user is identified. Preserve the actual customization parameters in every completed transaction record.",
+      "how_to_demo": "For each completed transaction in a test set covering supported customization parameters, the stored beverage and customization values match the executed order; no completed transaction in the test set lacks a record."
+    }
+  ],
+  "extraction_notes": [
+    "Sources: requirements/assignment2_baseline.json (starting artifact), requirements/.comparison_rows.json (21 comparison rows extracted from comparison_shortlist_single_table.docx), requirements/ai_requirements.json (accepted suggestions), requirements/reviewed_requirements.json (rejected-change resolutions and modified wording). All source files are preserved.",
+    "Decision precedence: latest user instruction controls. Accept/Approve/Approved selects AI suggestions; Modify applies the student justification; Reject selects the corresponding reviewed resolution. Blank decisions retain original baseline behavior. Decisions apply to the compared facet, not automatically every item mentioned in its row.",
+    "The Word table headings now match the content: column 5 is My Justification and column 6 is My Decision. Labels use Accept, Reject and Modify consistently.",
+    "Baseline IDs 1–13 are retained within each section. Requirement, story and backlog numbering is section-specific. New IDs are unused integers. AI categories and acceptance details are regrouped into baseline fields; constraints are requirements rather than a separate non-functional section.",
+    "Unlisted baseline capabilities remain unless a comparison decision changes them. The latest student clarification approves row 5 and accepts row 7; their AI expansions now replace the former blank-row fallback. The approved order-coordination backlog demo replaces the original baseline B6 demo.",
+    "All original numeric importance and estimate values are preserved through the reviewed source. They describe historical baseline planning, not a new estimate for expanded scope. Importance-scale semantics and estimate units remain undefined. New capabilities have null planning values.",
+    "No new fields are added to baseline objects. Accepted backlog traceability is represented through mappings in extraction_notes. Story acceptance behavior is expressed in requirements and demos. original_text contains the resulting story sentence rather than a claim of verbatim source extraction.",
+    "Story S5 originally lacks a reason. Its resulting reason is taken from AI US-02 (choose a beverage that suits my preferences) rather than invented.",
+    "The student authorized resolving rows 4 and 18 by rejecting the AI omissions. Ingredient-information display and saved-recipe deletion are retained. All 21 decisions and justifications are complete.",
+    "Open details: PIN/username rules and card enrollment; camera permission; offline payment methods, limits and reconciliation; transaction-completion/cancellation policy; recipe/bin dependency verification; ingredient/bin thresholds; diagnostic retention and remote authentication; numerical usability and timing targets. No prototype constants are imported into this requirements artifact.",
+    "Overflow exceptions are a student-directed modification. Bin independence must be verified; the document does not assume that a drink without coffee is independent of all waste bins.",
+    "Requirement R1 source mapping: reviewed FR-01; baseline R1.",
+    "Requirement R2 source mapping: AI FR-05/FR-06; baseline R2.",
+    "Requirement R3 source mapping: AI FR-02 plus reviewed FR-01 credential detail; baseline R3.",
+    "Requirement R4 source mapping: reviewed FR-04, restoring baseline ingredient display and beverage prices while keeping AI category browsing.",
+    "Requirement R5 source mapping: AI FR-04 nutrition facet; baseline R5.",
+    "Requirement R6 source mapping: accepted AI FR-08 coordinated with reviewed FR-08 order-confirmation/payment conditions; baseline R6 ID retained.",
+    "Requirement R7 source mapping: reviewed FR-09; baseline R7.",
+    "Requirement R8 source mapping: reviewed FR-15; baseline R8.",
+    "Requirement R9 source mapping: reviewed FR-25; baseline R9.",
+    "Requirement R10 source mapping: AI FR-17/FR-19; baseline R10.",
+    "Requirement R11 source mapping: baseline R11 unchanged.",
+    "Requirement R12 source mapping: reviewed FR-12 plus baseline R12 mood input.",
+    "Requirement R13 source mapping: baseline R13 unchanged.",
+    "Requirement R14 source mapping: AI FR-03.",
+    "Requirement R15 source mapping: AI/reviewed FR-13 with login modification.",
+    "Requirement R16 source mapping: AI FR-14 with login modification.",
+    "Requirement R17 source mapping: AI FR-17.",
+    "Requirement R18 source mapping: reviewed FR-18, modified bin-dependent overflow behavior.",
+    "Requirement R19 source mapping: AI FR-20.",
+    "Requirement R20 source mapping: AI FR-21.",
+    "Requirement R21 source mapping: AI FR-22.",
+    "Requirement R22 source mapping: AI NFR-01.",
+    "Requirement R23 source mapping: reviewed NFR-02.",
+    "Requirement R24 source mapping: AI NFR-03.",
+    "Requirement R25 source mapping: AI NFR-06.",
+    "Requirement R26 source mapping: AI NFR-07.",
+    "Backlog B1 requirement references: R1.",
+    "Backlog B2 requirement references: R3.",
+    "Backlog B3 requirement references: R2, R6, R25, R26, R27, R30.",
+    "Backlog B4 requirement references: R4, R25.",
+    "Backlog B5 requirement references: R5, R25.",
+    "Backlog B6 requirement references: R6, R7, R18, R27, R30.",
+    "Backlog B7 requirement references: R7, R21.",
+    "Backlog B8 requirement references: R8, R23.",
+    "Backlog B9 requirement references: R9, R17, R18, R23.",
+    "Backlog B10 requirement references: R10, R17, R19, R23, R26.",
+    "Backlog B11 requirement references: R11, R23.",
+    "Backlog B12 requirement references: R12, R15, R16, R22, R28, R29.",
+    "Backlog B13 requirement references: R13.",
+    "Backlog B14 requirement references: R14.",
+    "Backlog B15 requirement references: R20, R24.",
+    "Backlog B16 requirement references: R7, R21, R24.",
+    "Comparison row 1: {\"category\":\"Functional Requirements\",\"assignment_2\":\"R1: username and personal PIN. Username not taken\",\"llm_version\":\"FR-01: account creation. OQ-01\",\"difference\":\"Reduced: Registration no longer explicitly specifies username/PIN inputs or username uniqueness; credential rules remain an open question.\",\"decision\":\"Reject\",\"justification\":\"The LLM version omits the explicit username, personal PIN and username-uniqueness details from Assignment 2. These details should remain explicit requirements so that registration can be implemented and tested consistently.\",\"requirement_ids\":[1],\"resolution\":\"Use reviewed FR-01: explicit username/PIN and unique username.\"}",
+    "Comparison row 2: {\"category\":\"Functional Requirements\",\"assignment_2\":\"R3: username/PIN login\",\"llm_version\":\"FR-02: user authentication\",\"difference\":\"Expanded: Adds linked NFC/card login and an explicit invalid-authentication outcome.\",\"decision\":\"Accept\",\"justification\":\"The LLM version adds NFC/card authentication and explicitly defines what happens when authentication fails. These additions make the login requirement more complete.\",\"requirement_ids\":[3],\"resolution\":\"Use AI FR-02: credential or linked-card login; reject invalid authentication. Carry forward explicit username/PIN from reviewed registration.\"}",
+    "Comparison row 3: {\"category\":\"Functional Requirements\",\"assignment_2\":\"R12 uses preferences for recommendations, no explicit preference-editing operation\",\"llm_version\":\"FR-03: personal preference profiles\",\"difference\":\"Newly introduced: Adds viewing and maintaining preference profiles.\",\"decision\":\"Accept\",\"justification\":\"Maintaining personal preference profiles is explicitly required by the system description. The LLM makes the viewing and maintenance operations explicit.\",\"requirement_ids\":[14],\"resolution\":\"Use AI FR-03: view and maintain preferences.\"}",
+    "Comparison row 4: {\"category\":\"Functional Requirements\",\"assignment_2\":\"R4 outputs ingredient information\",\"llm_version\":\"No explicit ingredient-information display in FR-04 or FR-05\",\"difference\":\"Missing: Nutrition display and customization do not explicitly retain ingredient-information output.\",\"decision\":\"Reject\",\"justification\":\"Assignment 2 explicitly includes ingredient-information display, but the LLM version does not retain it. This omission should be rejected so users can inspect beverage ingredients before ordering.\",\"requirement_ids\":[4],\"resolution\":\"Reject the AI omission and restore ingredient-information display from baseline R4 across the menu requirement, story and backlog.\"}",
+    "Comparison row 5: {\"category\":\"Functional Requirements\",\"assignment_2\":\"R6: valid, available beverage; order ready for payment\",\"llm_version\":\"FR-07, FR-08: availability checks and preparation coordination; NFR-05\",\"difference\":\"Expanded: Defines ingredient-threshold selection blocks and coordinates payment, machine readiness, and preparation. NFR-05 adds checks across manual, saved-recipe, recommendation, and optional language-agent paths.\",\"decision\":\"Accept\",\"justification\":\"The expanded requirement is relevant because it clarifies that ingredient availability must be checked consistently across all ordering paths, not only during manual selection. This improves completeness and reduces the risk of invalid orders.\",\"requirement_ids\":[6,27,30],\"resolution\":\"Accepted: apply AI ingredient-threshold guards and payment/readiness/preparation coordination consistently across enabled ordering paths. Retain the separately decided order confirmation and bin-dependent overflow modifications.\"}",
+    "Comparison row 6: {\"category\":\"Functional Requirements\",\"assignment_2\":\"R7 requires a confirmed order and calculated amount before payment\",\"llm_version\":\"FR-09; OQ-04\",\"difference\":\"Reduced: User confirmation and a calculated payable amount are no longer explicit preconditions; pricing and the payment lifecycle remain unresolved.\",\"decision\":\"Reject\",\"justification\":\"User confirmation and calculation of the payable amount should remain explicit preconditions before payment. They make the payment flow clearer and easier to test.\",\"requirement_ids\":[7],\"resolution\":\"Use reviewed FR-09: retain confirmed order and calculated amount before payment.\"}",
+    "Comparison row 7: {\"category\":\"Functional Requirements\",\"assignment_2\":\"R12 uses history but specifies no transaction-recording operation\",\"llm_version\":\"FR-10: transaction history; NFR-04: data integrity\",\"difference\":\"Newly introduced: Records every completed transaction with actual customization values and links identified users to history. NFR-04 adds record-accuracy checks.\",\"decision\":\"Accept\",\"justification\":\"The system description explicitly requires recording every completed transaction, including beverage customization parameters. The LLM makes this requirement explicit, providing the history needed for personalized recommendations.\",\"requirement_ids\":[28,29],\"resolution\":\"Accepted: record completed transactions with actual customization values, associate identified users with their history, and verify record accuracy using AI NFR-04.\"}",
+    "Comparison row 8: {\"category\":\"Functional Requirements\",\"assignment_2\":\"R12: personalized recommendations; no explicit score-based menu ordering\",\"llm_version\":\"FR-12, FR-14: recommendation scores and menu presentation\",\"difference\":\"Newly introduced: Adds calculated recommendation scores and uses them to reorder and highlight menu items.\",\"decision\":\"Accept\",\"justification\":\"Recommendation-based menu ordering and highlighting are explicitly mentioned in the system description. They should be included as functional requirements because they are expected system behavior.\",\"requirement_ids\":[12,16],\"resolution\":\"Use AI recommendation scores and score-based menu ordering/highlighting, subject to row 9 login modification.\"}",
+    "Comparison row 9: {\"category\":\"Functional Requirements\",\"assignment_2\":\"R12 requires login and online services for recommendations\",\"llm_version\":\"FR-12, FR-21; OQ-02\",\"difference\":\"Reduced: Recommendations refer to available context without explicitly retaining login and online-service preconditions. Unidentified-user behavior remains unresolved.\",\"decision\":\"Modify\",\"justification\":\"Login should remain mandatory for personalized recommendations because they use the identified user’s data. Unavailable external services should reduce the available recommendation context rather than disable the local recommendation calculation.\",\"requirement_ids\":[12,15,16],\"resolution\":\"Modify recommendations: login is required; missing external context degrades local recommendations instead of disabling them.\"}",
+    "Comparison row 10: {\"category\":\"Functional Requirements\",\"assignment_2\":\"R9: register waste disposal and reset counter to zero; S9 and B9 also cover disposal/reset\",\"llm_version\":\"No explicit reset in FR-17, FR-18, US-10, or PB-12; OQ-08\",\"difference\":\"Missing: Monitoring and overflow handling do not specify registering bin emptying or resetting its counter. Emptying registration remains an open question.\",\"decision\":\"Reject\",\"justification\":\"Monitoring alone cannot register that a waste bin has been emptied. Disposal registration and resetting the selected bin counter to zero should therefore be retained so waste readings and future alerts remain accurate.\",\"requirement_ids\":[9],\"resolution\":\"Use reviewed FR-25: restore registration of physical emptying and selected-bin reset to zero.\"}",
+    "Comparison row 11: {\"category\":\"Functional Requirements\",\"assignment_2\":\"R10: alerts and system status\",\"llm_version\":\"FR-17, FR-19, FR-20: waste status, errors, and diagnostics\",\"difference\":\"Expanded: Adds separate waste-bin status, example fault types, dashboard messages, event recording, and remote diagnostic access.\",\"decision\":\"Accept\",\"justification\":\"The expanded waste status, fault reporting, dashboard messages, event logs and remote diagnostics are useful and supported by the system description.\",\"requirement_ids\":[10,17,19],\"resolution\":\"Use AI bin-specific monitoring, errors, dashboard messages, event logs and authorized remote diagnostics.\"}",
+    "Comparison row 12: {\"category\":\"Functional Requirements\",\"assignment_2\":\"No explicit overflow halt in R9 or R10\",\"llm_version\":\"FR-18: overflow interlock\",\"difference\":\"Newly introduced: Blocks or halts preparation while either monitored bin overflows.\",\"decision\":\"Modify\",\"justification\":\"This is a proposed design change to the system description’s instruction to halt operations on overflow. Preparation that depends on an overflowing bin must stop. Other drinks may proceed only when verified to be independent of that bin and when all other safety checks pass; unknown dependencies must block preparation.\",\"requirement_ids\":[18],\"resolution\":\"Use reviewed modified overflow logic: halt affected recipes; allow verified-independent recipes only if other guards pass. Unknown dependencies do not permit exceptions.\"}",
+    "Comparison row 13: {\"category\":\"Functional Requirements\",\"assignment_2\":\"No explicit outage-ordering or offline-payment operation\",\"llm_version\":\"FR-21, FR-22; NFR-03; US-12; PB-14, PB-15\",\"difference\":\"Newly introduced: Adds manual ordering during outages and resilience tests for browsing, selection, and customization. Offline payment depends on an unresolved policy.\",\"decision\":\"Accept\",\"justification\":\"Manual ordering during outages and offline payment fallback are explicitly supported by the system description and improve resilience. The permitted offline payment policy still needs to be defined.\",\"requirement_ids\":[20,21,24],\"resolution\":\"Use AI manual outage fallback and offline payment; retain policy questions instead of inventing acceptance rules.\"}",
+    "Comparison row 14: {\"category\":\"Functional Requirements\",\"assignment_2\":\"No explicit local language-agent operation or module-separation constraint\",\"llm_version\":\"FR-23, FR-24; NFR-08; US-13; PB-16\",\"difference\":\"Newly introduced: Adds an optional embedded LLM that translates free-form drink requests into constrained recipe instructions. Basic manual functions must remain available when it is absent or disabled.\",\"decision\":\"Reject\",\"justification\":\"The LLM correctly identifies the optional local language-agent feature. I exclude it from the current scope because it is optional; this is a scope decision rather than a claim that the feature is absent from the system description.\",\"requirement_ids\":[],\"resolution\":\"Use reviewed exclusion of optional local natural-language LLM. Do not add FR-23, FR-24, NFR-08, US-13 or PB-16 from AI. Existing personalized/mood recommendations remain.\"}",
+    "Comparison row 15: {\"category\":\"Non-Functional Requirements\",\"assignment_2\":\"R12 uses mood; no explicit facial-image handling constraint\",\"llm_version\":\"NFR-01: privacy\",\"difference\":\"Newly introduced: Requires memory-only facial-image processing, no persistent storage or external transmission, and disposal after inference, including failure paths.\",\"decision\":\"Accept\",\"justification\":\"Facial images must be processed entirely in temporary memory, immediately discarded after inference, and neither saved to disk nor transmitted externally. The LLM makes these privacy constraints explicit, including failure paths.\",\"requirement_ids\":[22],\"resolution\":\"Use AI NFR-01: no persistent image storage or external transmission, immediate disposal after inference including failure paths.\"}",
+    "Comparison row 16: {\"category\":\"Non-Functional Requirements\",\"assignment_2\":\"R2, R4, R5 have no ease-of-use criterion; R2 and R10 have no explicit update timing bounds\",\"llm_version\":\"NFR-06: usability; NFR-07: performance; OQ-09\",\"difference\":\"Newly introduced: Adds intuitive-touchscreen and real-time-update constraints, but leaves measurable usability and timing criteria undefined.\",\"decision\":\"Accept\",\"justification\":\"The usability and real-time performance requirements are supported by the system description. I accept these constraints while recording that measurable usability criteria and response-time targets remain undefined and must be agreed before acceptance testing.\",\"requirement_ids\":[25,26],\"resolution\":\"Use AI NFR-06/NFR-07; measurable usability and response-time targets remain undefined.\"}",
+    "Comparison row 17: {\"category\":\"User Stories\",\"assignment_2\":\"S4 includes seeing how much beverages cost\",\"llm_version\":\"No explicit price-display criterion in US-02; OQ-04\",\"difference\":\"Missing: Beverage-price display is not retained. The pricing question does not supply a display requirement.\",\"decision\":\"Reject\",\"justification\":\"Users should be able to see beverage prices before ordering. Although price display is not explicitly stated in the system description, retaining it from Assignment 2 helps users make informed decisions.\",\"requirement_ids\":[4],\"resolution\":\"Use reviewed price-display restoration in menu, story and backlog.\"}",
+    "Comparison row 18: {\"category\":\"Product Backlog\",\"assignment_2\":\"B3 demo deletes the saved recipe\",\"llm_version\":\"No recipe deletion in PB-03, FR-06, or US-03\",\"difference\":\"Missing: Saved recipes can be saved, named, modified, and ordered, but deletion is not specified.\",\"decision\":\"Reject\",\"justification\":\"Recipe deletion is included in the Assignment 2 demonstration but omitted by the LLM. Although the system description does not explicitly require deletion, it is a useful part of managing saved recipes and should be retained.\",\"requirement_ids\":[2],\"resolution\":\"Reject the AI omission and restore deletion of a user’s saved recipes, including its acceptance condition and demonstration.\"}",
+    "Comparison row 19: {\"category\":\"Product Backlog\",\"assignment_2\":\"B8 demo checks that the next user cannot access admin mode after logout\",\"llm_version\":\"No explicit maintenance logout/session revocation in PB-10; OQ-01\",\"difference\":\"Missing: Protected entry does not explicitly retain revocation of administrative access on logout. Session ending is addressed only as an open question.\",\"decision\":\"Modify\",\"justification\":\"The system description requires secure administrative access but does not explicitly define logout behavior. Administrative access must be revoked when the technician logs out so the next user cannot reuse it.\",\"requirement_ids\":[8,23],\"resolution\":\"Modify maintenance logout using reviewed FR-15/NFR-02: revoke access and prevent next-user or previous-session reuse.\"}",
+    "Comparison row 20: {\"category\":\"Product Backlog\",\"assignment_2\":\"B1-B13: numeric importance values of 40-100 and estimates of 2-9; estimate unit undefined\",\"llm_version\":\"PB-01-PB-15: must; PB-16: optional; all effort estimates null; A-02, A-03\",\"difference\":\"Reduced: Removes differentiated numeric importance and numeric effort estimates. Categorical scope labels are not equivalent rankings, and effort changes cannot be calculated.\",\"decision\":\"Reject\",\"justification\":\"The LLM version loses the numeric prioritization and effort information from Assignment 2. Retain those values for the corresponding backlog items to support ranking and planning, while recording that estimate units are undefined and expanded work needs reassessment.\",\"requirement_ids\":[],\"resolution\":\"Use reviewed numeric values for original thirteen backlog items; they match baseline exactly. New items have null importance/estimate and no estimation unit is invented.\"}",
+    "Comparison row 21: {\"category\":\"Product Backlog\",\"assignment_2\":\"B1-B13 have no explicit requirement-reference field\",\"llm_version\":\"PB-01-PB-16 include related_requirement_ids\",\"difference\":\"Expanded: Adds explicit traceability from backlog items to functional and/or non-functional requirements.\",\"decision\":\"Accept\",\"justification\":\"Traceability clearly links backlog items to the requirements they implement, making the backlog easier to understand, verify and maintain.\",\"requirement_ids\":[],\"resolution\":\"Retain AI traceability semantics using explicit backlog-to-requirement mappings in extraction_notes, since the exact baseline backlog schema has no reference field.\"}",
+    "Latest student clarification: comparison row 5 is Approved and row 7 is Accept; exact justifications are preserved in those row records. This clarification supersedes their former blank status.",
+    "Requirement R27 source mapping: accepted AI FR-07. Requirement R28 source mapping: accepted AI FR-10. Requirement R29 source mapping: accepted AI NFR-04. Requirement R30 source mapping: AI NFR-05 guards across enabled paths, reconciled with the separately modified bin-dependent overflow behavior in R18. The rejected optional local LLM remains excluded.",
+    "Backlog B17 requirement references: R27, R30. Backlog B18 requirement references: R28, R29. Story S17 expresses the newly accepted transaction-history capability; no original integer ID is renumbered.",
+    "Student-authorized final corrections resolve the ingredient-display and recipe-deletion conflicts by rejecting the AI omissions. Registration credentials are attributed to Assignment 2. The proposed overflow exception is explicitly a design change requiring verified independence. Usability and timing targets remain open rather than invented."
+  ]
+}

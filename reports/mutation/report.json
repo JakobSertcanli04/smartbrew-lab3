@@ -1,0 +1,679 @@
+{
+  "generatedAt": "2026-10-26T18:55:43.091Z",
+  "nodeVersion": "v24.16.0",
+  "selection": "all 40 mutants",
+  "timeoutMs": 30000,
+  "sourceBefore": "a97ff1b45e9225a34963beb77b07d4db63b036e70f00b8ce8678780241451bd9",
+  "sourceAfter": "a97ff1b45e9225a34963beb77b07d4db63b036e70f00b8ce8678780241451bd9",
+  "sourceUnchanged": true,
+  "baseline": {
+    "status": "passed",
+    "elapsedMs": 13111,
+    "exitCode": 0,
+    "testCount": 25,
+    "failedTests": [],
+    "error": null
+  },
+  "results": [
+    {
+      "id": "M01",
+      "title": "Accept an incorrect customer PIN",
+      "file": "src/app.js",
+      "find": "if (user && !verifyPin(pin, user.pin_hash)) user = undefined;",
+      "replace": "if (false) user = undefined;",
+      "status": "killed",
+      "elapsedMs": 8646,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "username/PIN and simulated NFC login reject invalid input; logout revokes replayed sessions"
+      ],
+      "error": null,
+      "log": "logs/M01.tap"
+    },
+    {
+      "id": "M02",
+      "title": "Accept an incorrect technician PIN",
+      "file": "src/app.js",
+      "find": "!verifyPin(pin, stored)",
+      "replace": "false",
+      "status": "killed",
+      "elapsedMs": 9888,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "admin HTML, status and all maintenance actions require separate authentication; logout revokes admin"
+      ],
+      "error": null,
+      "log": "logs/M02.tap"
+    },
+    {
+      "id": "M03",
+      "title": "Remove role separation after authentication",
+      "file": "src/app.js",
+      "find": "if (req.identity.role !== role)",
+      "replace": "if (false)",
+      "status": "killed",
+      "elapsedMs": 12324,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "admin HTML, status and all maintenance actions require separate authentication; logout revokes admin"
+      ],
+      "error": null,
+      "log": "logs/M03.tap"
+    },
+    {
+      "id": "M04",
+      "title": "Do not revoke the server session on logout",
+      "file": "src/app.js",
+      "find": "if (req.token) db.prepare('DELETE FROM sessions WHERE token_hash=?').run(digest(req.token));",
+      "occurrence": 1,
+      "replace": "/* Mutation: leave the logged-out session in the database. */",
+      "status": "killed",
+      "elapsedMs": 12276,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "username/PIN and simulated NFC login reject invalid input; logout revokes replayed sessions",
+        "admin HTML, status and all maintenance actions require separate authentication; logout revokes admin"
+      ],
+      "error": null,
+      "log": "logs/M04.tap"
+    },
+    {
+      "id": "M05",
+      "title": "Allow expired sessions",
+      "file": "src/app.js",
+      "find": "WHERE s.token_hash=? AND s.expires_at>?",
+      "replace": "WHERE s.token_hash=? AND (s.expires_at>? OR 1=1)",
+      "status": "killed",
+      "elapsedMs": 17312,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "expired sessions cannot access protected endpoints"
+      ],
+      "error": null,
+      "log": "logs/M05.tap"
+    },
+    {
+      "id": "M06",
+      "title": "Keep the old session after a new login",
+      "file": "src/app.js",
+      "find": "if (req.token) db.prepare('DELETE FROM sessions WHERE token_hash=?').run(digest(req.token));",
+      "occurrence": 0,
+      "replace": "/* Mutation: do not rotate out the previous server session. */",
+      "status": "killed",
+      "elapsedMs": 11982,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "a new login revokes the previous cookie while preserving the new session"
+      ],
+      "error": null,
+      "log": "logs/M06.tap"
+    },
+    {
+      "id": "M07",
+      "title": "Skip duplicate-username validation",
+      "file": "src/app.js",
+      "find": "if (username.toLowerCase() === 'admin' || db.prepare('SELECT id FROM users WHERE username=?').get(username))",
+      "replace": "if (username.toLowerCase() === 'admin')",
+      "status": "killed",
+      "elapsedMs": 13766,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "registration validates input, rejects duplicate names and stores salted hashes"
+      ],
+      "error": null,
+      "log": "logs/M07.tap"
+    },
+    {
+      "id": "M08",
+      "title": "Make usernames case sensitive",
+      "file": "src/database.js",
+      "find": "username TEXT NOT NULL UNIQUE COLLATE NOCASE",
+      "replace": "username TEXT NOT NULL UNIQUE COLLATE BINARY",
+      "status": "killed",
+      "elapsedMs": 13653,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "registration validates input, rejects duplicate names and stores salted hashes"
+      ],
+      "error": null,
+      "log": "logs/M08.tap"
+    },
+    {
+      "id": "M09",
+      "title": "Allow a two-character username",
+      "file": "src/app.js",
+      "find": "/^[A-Za-z0-9_]{3,24}$/",
+      "replace": "/^[A-Za-z0-9_]{2,24}$/",
+      "status": "killed",
+      "elapsedMs": 12445,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "registration validates input, rejects duplicate names and stores salted hashes"
+      ],
+      "error": null,
+      "log": "logs/M09.tap"
+    },
+    {
+      "id": "M10",
+      "title": "Do not require explicit order confirmation",
+      "file": "src/app.js",
+      "find": "!Number.isSafeInteger(beverageId) || confirmed !== true",
+      "replace": "!Number.isSafeInteger(beverageId)",
+      "status": "killed",
+      "elapsedMs": 12665,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "ordering requires a customer, explicit confirmation and a server-calculated price"
+      ],
+      "error": null,
+      "log": "logs/M10.tap"
+    },
+    {
+      "id": "M11",
+      "title": "Trust a customer-supplied order price",
+      "file": "src/app.js",
+      "find": ".run(req.identity.user_id, drink.id, drink.price_cents, drink.recipe)",
+      "replace": ".run(req.identity.user_id, drink.id, req.body.price_cents ?? drink.price_cents, drink.recipe)",
+      "status": "killed",
+      "elapsedMs": 13168,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "ordering requires a customer, explicit confirmation and a server-calculated price"
+      ],
+      "error": null,
+      "log": "logs/M11.tap"
+    },
+    {
+      "id": "M12",
+      "title": "Ignore ingredient minimum thresholds",
+      "file": "src/app.js",
+      "find": " || ingredient.level < ingredient.minimum",
+      "replace": "",
+      "status": "killed",
+      "elapsedMs": 12460,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "below-minimum ingredients block selection and payment of a previously pending order"
+      ],
+      "error": null,
+      "log": "logs/M12.tap"
+    },
+    {
+      "id": "M13",
+      "title": "Ignore the recipe quantity when minimum stock is present",
+      "file": "src/app.js",
+      "find": "ingredient.level < amount || ",
+      "replace": "",
+      "status": "killed",
+      "elapsedMs": 12584,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "stock above minimum but below the recipe quantity blocks selection and pending payment"
+      ],
+      "error": null,
+      "log": "logs/M13.tap"
+    },
+    {
+      "id": "M14",
+      "title": "Reject stock exactly equal to the minimum",
+      "file": "src/app.js",
+      "find": "ingredient.level < ingredient.minimum",
+      "replace": "ingredient.level <= ingredient.minimum",
+      "status": "killed",
+      "elapsedMs": 14664,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "competing payments cannot oversell the last recipe worth of coffee"
+      ],
+      "error": null,
+      "log": "logs/M14.tap"
+    },
+    {
+      "id": "M15",
+      "title": "Skip availability checks when placing an order",
+      "file": "src/app.js",
+      "find": "if (reasons.length) reject(409, reasons.join(' '));",
+      "occurrence": 0,
+      "replace": "/* Mutation: allow blocked selections. */",
+      "status": "killed",
+      "elapsedMs": 17005,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "below-minimum ingredients block selection and payment of a previously pending order",
+        "full grounds bin blocks coffee while verified independent tea remains available; disposal resets only selected bin",
+        "stock above minimum but below the recipe quantity blocks selection and pending payment",
+        "remaining waste capacity must fit the next drink before selection or payment"
+      ],
+      "error": null,
+      "log": "logs/M15.tap"
+    },
+    {
+      "id": "M16",
+      "title": "Skip availability recheck at payment",
+      "file": "src/app.js",
+      "find": "if (reasons.length) reject(409, reasons.join(' '));",
+      "occurrence": 1,
+      "replace": "/* Mutation: do not recheck the pending recipe before preparation. */",
+      "status": "killed",
+      "elapsedMs": 13129,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "below-minimum ingredients block selection and payment of a previously pending order",
+        "competing payments cannot oversell the last recipe worth of coffee",
+        "stock above minimum but below the recipe quantity blocks selection and pending payment",
+        "remaining waste capacity must fit the next drink before selection or payment"
+      ],
+      "error": null,
+      "log": "logs/M16.tap"
+    },
+    {
+      "id": "M17",
+      "title": "Treat declined payment as accepted",
+      "file": "src/app.js",
+      "find": "if (outcome === 'declined')",
+      "replace": "if (false)",
+      "status": "killed",
+      "elapsedMs": 12166,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "declined and malformed payments never consume ingredients and allow valid retry"
+      ],
+      "error": null,
+      "log": "logs/M17.tap"
+    },
+    {
+      "id": "M18",
+      "title": "Allow an order to be paid twice",
+      "file": "src/app.js",
+      "find": "if (order.status === 'paid')",
+      "replace": "if (false)",
+      "status": "killed",
+      "elapsedMs": 12247,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "accepted payment consumes the fixed recipe and increments only dependent bins exactly once"
+      ],
+      "error": null,
+      "log": "logs/M18.tap"
+    },
+    {
+      "id": "M19",
+      "title": "Allow payment of another customer’s order",
+      "file": "src/app.js",
+      "find": "WHERE o.id=? AND o.user_id=?",
+      "replace": "WHERE o.id=? AND (? IS NOT NULL)",
+      "status": "killed",
+      "elapsedMs": 13096,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "customers cannot read or pay another customer’s pending order"
+      ],
+      "error": null,
+      "log": "logs/M19.tap"
+    },
+    {
+      "id": "M20",
+      "title": "Expose another customer’s pending orders",
+      "file": "src/app.js",
+      "find": "WHERE o.user_id=? AND o.status='pending'",
+      "replace": "WHERE (o.user_id=? OR 1=1) AND o.status='pending'",
+      "status": "killed",
+      "elapsedMs": 11941,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "customers cannot read or pay another customer’s pending order"
+      ],
+      "error": null,
+      "log": "logs/M20.tap"
+    },
+    {
+      "id": "M21",
+      "title": "Leave an accepted order pending",
+      "file": "src/app.js",
+      "find": "UPDATE orders SET status='paid',payment_method=?",
+      "replace": "UPDATE orders SET status='pending',payment_method=?",
+      "status": "killed",
+      "elapsedMs": 12124,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "accepted payment consumes the fixed recipe and increments only dependent bins exactly once",
+        "accounts, sessions, orders, supplies and events persist across database reopening"
+      ],
+      "error": null,
+      "log": "logs/M21.tap"
+    },
+    {
+      "id": "M22",
+      "title": "Do not consume ingredients on successful payment",
+      "file": "src/app.js",
+      "find": "UPDATE ingredients SET level=level-? WHERE id=?",
+      "replace": "UPDATE ingredients SET level=level-0*? WHERE id=?",
+      "status": "killed",
+      "elapsedMs": 12172,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "accepted payment consumes the fixed recipe and increments only dependent bins exactly once",
+        "competing payments cannot oversell the last recipe worth of coffee",
+        "accounts, sessions, orders, supplies and events persist across database reopening",
+        "a storage failure after ingredient updates rolls back stock, bins and payment state"
+      ],
+      "error": null,
+      "log": "logs/M22.tap"
+    },
+    {
+      "id": "M23",
+      "title": "Do not increase the coffee-ground counter",
+      "file": "src/app.js",
+      "find": "db.prepare('UPDATE bins SET level=level+? WHERE id=?').run(amount, bin);",
+      "replace": "db.prepare('UPDATE bins SET level=level+? WHERE id=?').run(bin === 'grounds' ? 0 : amount, bin);",
+      "status": "killed",
+      "elapsedMs": 12873,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "accepted payment consumes the fixed recipe and increments only dependent bins exactly once",
+        "competing payments cannot oversell the last recipe worth of coffee",
+        "accounts, sessions, orders, supplies and events persist across database reopening"
+      ],
+      "error": null,
+      "log": "logs/M23.tap"
+    },
+    {
+      "id": "M24",
+      "title": "Disposal resets every bin",
+      "file": "src/app.js",
+      "find": "UPDATE bins SET level=0 WHERE id=?",
+      "replace": "UPDATE bins SET level=0 WHERE id=? OR 1=1",
+      "status": "killed",
+      "elapsedMs": 12870,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "full grounds bin blocks coffee while verified independent tea remains available; disposal resets only selected bin"
+      ],
+      "error": null,
+      "log": "logs/M24.tap"
+    },
+    {
+      "id": "M25",
+      "title": "Refill resets every ingredient",
+      "file": "src/app.js",
+      "find": "UPDATE ingredients SET level=capacity WHERE id=?",
+      "replace": "UPDATE ingredients SET level=capacity WHERE id=? OR 1=1",
+      "status": "killed",
+      "elapsedMs": 16319,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "refill resets one ingredient to maximum and requires physical-refill confirmation"
+      ],
+      "error": null,
+      "log": "logs/M25.tap"
+    },
+    {
+      "id": "M26",
+      "title": "Skip physical-emptying confirmation",
+      "file": "src/app.js",
+      "find": "if (req.body?.emptied !== true)",
+      "replace": "if (false)",
+      "status": "killed",
+      "elapsedMs": 13268,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "full grounds bin blocks coffee while verified independent tea remains available; disposal resets only selected bin"
+      ],
+      "error": null,
+      "log": "logs/M26.tap"
+    },
+    {
+      "id": "M27",
+      "title": "Skip physical-refill confirmation",
+      "file": "src/app.js",
+      "find": "if (req.body?.refilled !== true)",
+      "replace": "if (false)",
+      "status": "killed",
+      "elapsedMs": 12514,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "refill resets one ingredient to maximum and requires physical-refill confirmation"
+      ],
+      "error": null,
+      "log": "logs/M27.tap"
+    },
+    {
+      "id": "M28",
+      "title": "Ignore waste capacity needed by the next drink",
+      "file": "src/app.js",
+      "find": "bin.level + amount > bin.capacity || ",
+      "replace": "",
+      "status": "killed",
+      "elapsedMs": 13135,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "remaining waste capacity must fit the next drink before selection or payment"
+      ],
+      "error": null,
+      "log": "logs/M28.tap"
+    },
+    {
+      "id": "M29",
+      "title": "Block independent drinks when the grounds bin is full",
+      "file": "src/app.js",
+      "find": "const waste = JSON.parse(drink.waste);",
+      "replace": "const waste = { ...JSON.parse(drink.waste), grounds: JSON.parse(drink.waste).grounds ?? 1 };",
+      "status": "killed",
+      "elapsedMs": 10991,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "full grounds bin blocks coffee while verified independent tea remains available; disposal resets only selected bin"
+      ],
+      "error": null,
+      "log": "logs/M29.tap"
+    },
+    {
+      "id": "M30",
+      "title": "Let a grinder fault block every drink",
+      "file": "src/app.js",
+      "find": "fault.id === 'grinder' && drink.uses_grinder",
+      "replace": "fault.id === 'grinder'",
+      "status": "killed",
+      "elapsedMs": 8891,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "monitoring shows healthy state, selective fault blocks, global heater block, warnings and diagnostic events"
+      ],
+      "error": null,
+      "log": "logs/M30.tap"
+    },
+    {
+      "id": "M31",
+      "title": "Ignore heater readiness faults",
+      "file": "src/app.js",
+      "find": "fault.id === 'heater' || ",
+      "replace": "",
+      "status": "killed",
+      "elapsedMs": 9006,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "monitoring shows healthy state, selective fault blocks, global heater block, warnings and diagnostic events"
+      ],
+      "error": null,
+      "log": "logs/M31.tap"
+    },
+    {
+      "id": "M32",
+      "title": "Warn about low stock only at 10 percent",
+      "file": "src/app.js",
+      "find": "i.level <= i.capacity * 0.2",
+      "replace": "i.level <= i.capacity * 0.1",
+      "status": "killed",
+      "elapsedMs": 8749,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "low-stock warnings include the exact twenty-percent boundary and exclude the next unit"
+      ],
+      "error": null,
+      "log": "logs/M32.tap"
+    },
+    {
+      "id": "M33",
+      "title": "Do not warn about a bin until it is full",
+      "file": "src/app.js",
+      "find": "bin.level >= bin.capacity * 0.8",
+      "replace": "bin.level >= bin.capacity",
+      "status": "killed",
+      "elapsedMs": 9297,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "waste warnings start at eighty percent rather than waiting for a full bin"
+      ],
+      "error": null,
+      "log": "logs/M33.tap"
+    },
+    {
+      "id": "M34",
+      "title": "Display zero for every nutritional value",
+      "file": "src/app.js",
+      "find": "nutrition: JSON.parse(drink.nutrition)",
+      "replace": "nutrition: { kcal: 0, protein: 0, carbohydrates: 0, sugars: 0, fat: 0 }",
+      "status": "killed",
+      "elapsedMs": 8947,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "nutritional values match the documented demo catalogue, not just numeric field types"
+      ],
+      "error": null,
+      "log": "logs/M34.tap"
+    },
+    {
+      "id": "M35",
+      "title": "Display a menu price different from the charged price",
+      "file": "src/app.js",
+      "find": "price_cents: drink.price_cents,",
+      "replace": "price_cents: drink.price_cents + 100,",
+      "status": "killed",
+      "elapsedMs": 9116,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "the published menu price matches the confirmed and paid order price"
+      ],
+      "error": null,
+      "log": "logs/M35.tap"
+    },
+    {
+      "id": "M36",
+      "title": "Accept any syntactically valid NFC ID",
+      "file": "src/app.js",
+      "find": "db.prepare('SELECT * FROM users WHERE card_id=?').get(cardId)",
+      "replace": "(db.prepare('SELECT * FROM users WHERE card_id=?').get(cardId) || db.prepare('SELECT * FROM users ORDER BY id LIMIT 1').get())",
+      "status": "killed",
+      "elapsedMs": 12829,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "username/PIN and simulated NFC login reject invalid input; logout revokes replayed sessions"
+      ],
+      "error": null,
+      "log": "logs/M36.tap"
+    },
+    {
+      "id": "M37",
+      "title": "Report Ready when only some drinks are available",
+      "file": "src/app.js",
+      "find": "ready < drinks.length ? 'Limited' : 'Ready'",
+      "replace": "ready < drinks.length ? 'Ready' : 'Ready'",
+      "status": "killed",
+      "elapsedMs": 11408,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "full grounds bin blocks coffee while verified independent tea remains available; disposal resets only selected bin",
+        "monitoring shows healthy state, selective fault blocks, global heater block, warnings and diagnostic events"
+      ],
+      "error": null,
+      "log": "logs/M37.tap"
+    },
+    {
+      "id": "M38",
+      "title": "Drop diagnostic events",
+      "file": "src/app.js",
+      "find": "db.prepare('INSERT INTO events(kind,message) VALUES (?,?)').run(kind, message);",
+      "replace": "/* Mutation: discard the event instead of recording it. */",
+      "status": "killed",
+      "elapsedMs": 9170,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "monitoring shows healthy state, selective fault blocks, global heater block, warnings and diagnostic events",
+        "accounts, sessions, orders, supplies and events persist across database reopening"
+      ],
+      "error": null,
+      "log": "logs/M38.tap"
+    },
+    {
+      "id": "M39",
+      "title": "Restore all ingredients on every restart",
+      "file": "src/database.js",
+      "find": "INSERT OR IGNORE INTO ingredients",
+      "replace": "INSERT OR REPLACE INTO ingredients",
+      "status": "killed",
+      "elapsedMs": 9258,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "accounts, sessions, orders, supplies and events persist across database reopening"
+      ],
+      "error": null,
+      "log": "logs/M39.tap"
+    },
+    {
+      "id": "M40",
+      "title": "Commit a failed payment instead of rolling it back",
+      "file": "src/app.js",
+      "find": "catch (error) { db.exec('ROLLBACK'); throw error; }",
+      "occurrence": 0,
+      "replace": "catch (error) { db.exec('COMMIT'); throw error; }",
+      "status": "killed",
+      "elapsedMs": 13401,
+      "exitCode": 1,
+      "testCount": 25,
+      "failedTests": [
+        "a storage failure after ingredient updates rolls back stock, bins and payment state"
+      ],
+      "error": null,
+      "log": "logs/M40.tap"
+    }
+  ]
+}

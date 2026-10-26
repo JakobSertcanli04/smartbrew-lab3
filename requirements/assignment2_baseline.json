@@ -1,0 +1,316 @@
+{
+  "user_stories": [
+    {
+      "id": 1,
+      "role": "user",
+      "goal": "be able to create an account",
+      "reason": "interact with the Smartbrew system.",
+      "original_text": "As a user, I want to be able to create an account, which allows me to interact with the Smartbrew system."
+    },
+    {
+      "id": 2,
+      "role": "user",
+      "goal": "be able to manage preconfigured beverages",
+      "reason": "order it without needing to modifying my beverage.",
+      "original_text": "As a user, I want to be able to manage preconfigured beverages so I can order it without needing to modifying my beverage."
+    },
+    {
+      "id": 3,
+      "role": "user",
+      "goal": "login",
+      "reason": "access my account",
+      "original_text": "As a user, I want to login so that I can access my account"
+    },
+    {
+      "id": 4,
+      "role": "user",
+      "goal": "be able to view beverage options",
+      "reason": "an oversight of what I can order and see how much it costs.",
+      "original_text": "As a user, I want to be able to view beverage options, giving me an oversight of what I can order and see how much it costs."
+    },
+    {
+      "id": 5,
+      "role": "user",
+      "goal": "be able to inspect the nutrionial values of the beverages",
+      "reason": null,
+      "original_text": "As a user, I want to be able to inspect the nutrionial values of the beverages"
+    },
+    {
+      "id": 6,
+      "role": "user",
+      "goal": "place an order",
+      "reason": "receive my chosen beverage.",
+      "original_text": "As a user, I want to place an order so that I can receive my chosen beverage."
+    },
+    {
+      "id": 7,
+      "role": "user",
+      "goal": "pay for my order",
+      "reason": "the order can be completed.",
+      "original_text": "As a user, I want to pay for my order so that the order can be completed."
+    },
+    {
+      "id": 8,
+      "role": "technician",
+      "goal": "be able to enter the admin mode",
+      "reason": "maintain the system.",
+      "original_text": "As a technician, I want to be able to enter the admin mode, allowing me to maintain the system."
+    },
+    {
+      "id": 9,
+      "role": "technician",
+      "goal": "be able to register waste disposal",
+      "reason": "the machine to correctly know when it needs to send an alert to me.",
+      "original_text": "As a technician, I want to be able to register waste disposal, allowing the machine to correctly know when it needs to send an alert to me."
+    },
+    {
+      "id": 10,
+      "role": "technician",
+      "goal": "be able to monitor the machine",
+      "reason": "know when I need to maintain, making the machine fully functional at all times.",
+      "original_text": "As a technician, I want to be able to monitor the machine, allowing me to know when I need to maintain, making the machine fully functional at all times."
+    },
+    {
+      "id": 11,
+      "role": "technician",
+      "goal": "be able to register ingredients refill",
+      "reason": "the machine to correctly know when it needs more ingredients and if it is capable to brew a drink.",
+      "original_text": "As a technician, I want to be able to register ingredients refill, allowing the machine to correctly know when it needs more ingredients and if it is capable to brew a drink."
+    },
+    {
+      "id": 12,
+      "role": "user",
+      "goal": "receive AI based beverage recommendations",
+      "reason": "discover drinks that match my preferences.",
+      "original_text": "As a user, I want to receive AI based beverage recommendations so that I can discover drinks that match my preferences."
+    },
+    {
+      "id": 13,
+      "role": "user",
+      "goal": "be able to receive a receipt for a completed order",
+      "reason": "have proof of purchase.",
+      "original_text": "As a user, I want to be able to receive a receipt for a completed order so that I have proof of purchase."
+    }
+  ],
+  "requirements": [
+    {
+      "id": 1,
+      "description": "Allows a consumer to create a personal account in the system.",
+      "inputs": "User name and a personal pin code",
+      "outputs": "An account",
+      "precondition": "The user name isn’t taken",
+      "postcondition": "A new account is created"
+    },
+    {
+      "id": 2,
+      "description": "Allows user to manage and customize beverages",
+      "inputs": "A beverage",
+      "outputs": "Saved beverage configuration",
+      "precondition": "There’s beverages to modify",
+      "postcondition": "A customised beverage"
+    },
+    {
+      "id": 3,
+      "description": "Allows the user to login an interract with the system",
+      "inputs": "Username and pin",
+      "outputs": "Access to the user’s account",
+      "precondition": "Account exists",
+      "postcondition": "User logged in"
+    },
+    {
+      "id": 4,
+      "description": "View different beverages",
+      "inputs": "Beverage list",
+      "outputs": "Ingredient information and possbility to order",
+      "precondition": "Beverage exist",
+      "postcondition": "Beverage being inspected"
+    },
+    {
+      "id": 5,
+      "description": "Inspect the nutrional values of the beverages",
+      "inputs": "Inspected drink",
+      "outputs": "Nutrional values",
+      "precondition": "Drink has a nutrion list",
+      "postcondition": "Nutrion list of a drink"
+    },
+    {
+      "id": 6,
+      "description": "Place order",
+      "inputs": "A selected beverage",
+      "outputs": "An order ready for payment",
+      "precondition": "A valid and available beverage has been selected",
+      "postcondition": "The order is created and ready for payment"
+    },
+    {
+      "id": 7,
+      "description": "Pay for an order",
+      "inputs": "Money",
+      "outputs": "A transaction",
+      "precondition": "The consumer has confirmed an order and the amount to be paid has been calculated.",
+      "postcondition": "A processed transaction"
+    },
+    {
+      "id": 8,
+      "description": "Enter admin mode",
+      "inputs": "Admin pin or nfc card",
+      "outputs": "Access to the admin panel",
+      "precondition": "Correct credentials or authentication",
+      "postcondition": "Prevligie access granted for the admin"
+    },
+    {
+      "id": 9,
+      "description": "Register waste disposal",
+      "inputs": "The waste counter",
+      "outputs": "Waste disposal counter is reseted",
+      "precondition": "Admin access",
+      "postcondition": "System’s waste disposal counter has been reseted to 0"
+    },
+    {
+      "id": 10,
+      "description": "Monitor the system",
+      "inputs": "None",
+      "outputs": "Alerts and system status if there is any",
+      "precondition": "Admin access",
+      "postcondition": "Admin is now monitrong the system"
+    },
+    {
+      "id": 11,
+      "description": "Update the system's ingredient levels after ingredients have been physically refilled.",
+      "inputs": "The ingredient counter",
+      "outputs": "Ingredient counter is fileld",
+      "precondition": "Admin Access",
+      "postcondition": "System’s ingredient counter has been filled to its original value"
+    },
+    {
+      "id": 12,
+      "description": "Provides personalized beverage recommendations based on the consumer's preferences, previous choices, time of day, weather, and detected mood.",
+      "inputs": "A list of the available beverages, mood, weather and user history",
+      "outputs": "A beverage",
+      "precondition": "The consumer is logged in and services are not offline.",
+      "postcondition": "A recommended beverage which the user can choose to order."
+    },
+    {
+      "id": 13,
+      "description": "Allows the consumer to receive a receipt for a successfully completed transaction through a QR code or email.",
+      "inputs": "A transaction",
+      "outputs": "A reciept",
+      "precondition": "The payment has been successfully completed.",
+      "postcondition": "A reciept generated by the system."
+    }
+  ],
+  "product_backlog": [
+    {
+      "id": 1,
+      "name": "Create account",
+      "importance": 60,
+      "estimate": 5,
+      "description": "Allows a user to creat an account they later can log in to",
+      "how_to_demo": "Enter random credentials, and then try to login"
+    },
+    {
+      "id": 2,
+      "name": "Login",
+      "importance": 100,
+      "estimate": 3,
+      "description": "Allows a user to login to interract with the system",
+      "how_to_demo": "Enter false credentials and then credentials which belongs to a user, should succed"
+    },
+    {
+      "id": 3,
+      "name": "Managed saved beverages",
+      "importance": 40,
+      "estimate": 6,
+      "description": "Allows users to create and manage their recipies",
+      "how_to_demo": "Login to the system, order a drink, change up the ingredients. And then select the option to save it as a saved beverage. Log out of the system and then login to see it as an aviaiable saved beverage, modify it further and end the demo by deleting it to prove the mechnism works."
+    },
+    {
+      "id": 4,
+      "name": "View beverage options",
+      "importance": 80,
+      "estimate": 2,
+      "description": "A list of beverages represented on the screen",
+      "how_to_demo": "Navigate to the beverage options panel"
+    },
+    {
+      "id": 5,
+      "name": "Inspect nutrional value",
+      "importance": 50,
+      "estimate": 2,
+      "description": "A list of nutrional values of the drinks",
+      "how_to_demo": "Click on the nutrional value option for the beverage"
+    },
+    {
+      "id": 6,
+      "name": "Place order",
+      "importance": 100,
+      "estimate": 4,
+      "description": "Users should be able to place orders",
+      "how_to_demo": "Login, click on a beverage and then try to place an order. While placing an order you should not be able to click on other parts of the screen. Log out and login to make sure that the order isn’t there."
+    },
+    {
+      "id": 7,
+      "name": "Pay for an order",
+      "importance": 100,
+      "estimate": 4,
+      "description": "Allows users to fulfill transactions",
+      "how_to_demo": "After placing an order, try to pay for it. Make sure the payment service has received and processed the transaction."
+    },
+    {
+      "id": 8,
+      "name": "Enter admin mode",
+      "importance": 40,
+      "estimate": 4,
+      "description": "Allows admins to login to the system’s maintenance mode",
+      "how_to_demo": "Login to the admin mode, through the pin code or the nfc card. Navigate around and then log out, the next user to login should not be able to access it blindly"
+    },
+    {
+      "id": 9,
+      "name": "Register waste disposal",
+      "importance": 40,
+      "estimate": 2,
+      "description": "A counter used to make the system aware of its current waste levels",
+      "how_to_demo": "Place a order and pay for it, make sure it goes through, Record the earlier counter value and the value after it. Then let a an admin reset the value back to its original value."
+    },
+    {
+      "id": 10,
+      "name": "Monitor system",
+      "importance": 40,
+      "estimate": 6,
+      "description": "An adminpanel which will be used to track the machine’s health, and maintainance reasons",
+      "how_to_demo": "Allow an technciian to go around and navigate through the system. Make sure the alert goes through by temporary decreasing the counter values ."
+    },
+    {
+      "id": 11,
+      "name": "Update ingredient level",
+      "importance": 40,
+      "estimate": 2,
+      "description": "A counter used to make the system aware of its current ingredient levels",
+      "how_to_demo": "Place a order and pay for it, make sure it goes through, Record the earlier counter value and the value after it. Then let a an admin reset the value back to its original value."
+    },
+    {
+      "id": 12,
+      "name": "Recommendation system",
+      "importance": 50,
+      "estimate": 9,
+      "description": "The system recommends users beverages based on earlier history and today’s needs",
+      "how_to_demo": "Place multiple fake orders and then see how the recommendation ml algo changes. Test the mood camera and try to change the history by inserting false values. Use different facial expressions and verify that the recommendations change."
+    },
+    {
+      "id": 13,
+      "name": "Reciept",
+      "importance": 100,
+      "estimate": 4,
+      "description": "The system generates a reciept",
+      "how_to_demo": "Pay for different orders and make sure you receive a receipt with the correct information."
+    }
+  ],
+  "extraction_notes": [
+    "assignment2.pdf was absent. Source: G23Lab2.pdf (5 pages), containing 13 user stories, 13 requirements, and 13 backlog items.",
+    "User story 5 has no stated reason; reason is null. Requirement 10 explicitly lists its input as None, preserved as a string.",
+    "Original spelling and grammar are preserved, including nutrionial, nutrional, nutrion, interract, possbility, Prevligie, reseted, monitrong, fileld, reciept, creat, recipies, succed, aviaiable, mechnism, technciian, maintainance, Managed saved beverages, and let a an admin.",
+    "Line wrapping and spacing are normalized; words broken across table lines are rejoined. Multi-digit requirement IDs printed on separate lines are combined. Story list numbers are stored in id; original_text preserves the story wording.",
+    "Continued table cells are joined across pages: requirement 4 (pages 1–2), backlog item 5 (pages 3–4), and backlog item 10 (pages 4–5).",
+    "Backlog IDs 2 and 3 are Login and Managed saved beverages respectively; stories and requirements use 2 for beverage management and 3 for login. Original ordering and IDs are preserved.",
+    "Importance scales and estimate units are unspecified. Backlog item 6 does not explain why an order should disappear after logging out and in. Backlog item 9 resets the waste counter to its original value; requirement 9 specifies 0. These statements are preserved."
+  ]
+}

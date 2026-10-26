@@ -1,0 +1,17 @@
+<!doctype html>
+<!-- Protected dashboard: live readings, selected-bin disposal, full ingredient refills and hardware-fault simulation. -->
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SmartBrew · Machine dashboard</title><link rel="stylesheet" href="/styles.css"><script src="/app.js" defer></script></head>
+<body data-page="admin">
+  <header><a class="brand" href="/">SmartBrew<span>YOUR DAILY COFFEE BREAK</span></a><nav aria-label="Main navigation"><a href="/">Beverage menu</a><span class="admin-tag">Maintenance mode</span><button class="secondary compact" data-action="logout">Log out</button></nav></header>
+  <main><section class="intro"><p class="eyebrow">MACHINE MAINTENANCE</p><h1>Keep the coffee flowing.</h1><p>Monitor local readings and register completed refills and waste disposal.</p></section>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    <section class="status-bar" aria-label="Machine status"><div><p class="eyebrow">CURRENT STATUS</p><strong id="machine-status">Loading…</strong></div><div><p class="eyebrow">LAST READING</p><span id="last-reading">Loading…</span></div><button class="secondary" data-action="refresh">Refresh readings</button></section>
+    <div class="layout admin-layout"><section class="panel"><div class="section-heading"><h2>Ingredient levels</h2><span>Register full refills only</span></div><div class="scroll"><table><thead><tr><th scope="col">Ingredient</th><th scope="col">Available</th><th scope="col">Minimum</th><th scope="col">Capacity</th><th scope="col">Action</th></tr></thead><tbody id="ingredient-rows"></tbody></table></div></section>
+      <aside><section class="panel"><h2>Waste disposal</h2><div id="bins"></div></section><section class="panel"><h2>Warnings</h2><div id="warnings" aria-live="polite">Loading readings…</div></section></aside>
+    </div>
+    <section class="panel hardware"><div class="section-heading"><h2>Hardware indicators</h2><span>Local simulation for demonstration</span></div><p class="small muted">Use the controls to simulate a grinder or heater fault and observe the warnings and affected drinks. Clear the fault to restore operation.</p><div id="faults" class="fault-grid"></div></section>
+    <section class="panel"><div class="section-heading"><h2>Diagnostic events</h2><span>Latest 20 · authorized access</span></div><div id="events"></div></section>
+  </main><footer><span>SmartBrew · Classroom prototype</span><span>Readings update every 5 seconds</span></footer>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<!-- Customer interface: account forms, beverage/nutrition browsing, order confirmation and simulated checkout. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartBrew · Beverage menu</title><link rel="stylesheet" href="/styles.css"><script src="/app.js" defer></script>
+</head>
+<body data-page="menu">
+  <header><a class="brand" href="/">SmartBrew<span>YOUR DAILY COFFEE BREAK</span></a><nav aria-label="Main navigation"><a href="/" aria-current="page">Beverage menu</a><a href="/admin-login.html">Maintenance</a></nav></header>
+  <main>
+    <section class="intro"><p class="eyebrow">FRESHLY PREPARED. SIMPLY ORDERED.</p><h1>Your next cup<br>starts here.</h1><p>Explore the menu, check what’s inside, and choose a drink for your break.</p></section>
+    <div id="notice" role="status" aria-live="polite" class="notice" hidden></div>
+    <div class="layout">
+      <section aria-labelledby="menu-title"><div class="section-heading"><h2 id="menu-title">On the menu</h2><span>Prices in SEK · per serving</span></div>
+        <div class="filters" aria-label="Beverage category"><button class="filter selected" data-action="filter" data-category="All" aria-pressed="true">All drinks</button><button class="filter" data-action="filter" data-category="Coffee" aria-pressed="false">Coffee</button><button class="filter" data-action="filter" data-category="Other" aria-pressed="false">Tea & chocolate</button><button class="filter" data-action="refresh-menu">Refresh menu</button></div>
+        <div id="menu" class="menu-grid" aria-live="polite">Loading menu…</div>
+      </section>
+      <aside>
+        <section class="panel" aria-labelledby="account-title"><h2 id="account-title">Your account</h2>
+          <div id="customer-info" hidden><p id="identity-name"></p><p id="identity-card" class="small"></p><a id="dashboard-link" href="/admin" hidden>Open maintenance dashboard</a><button data-action="logout" class="secondary" type="button">Log out</button></div>
+          <div id="account-forms"><p class="muted small">Sign in to place and pay for your order.</p>
+            <form id="login"><label for="username">Username</label><input id="username" name="username" autocomplete="username" maxlength="24" required><label for="pin">Personal PIN</label><input id="pin" name="pin" type="password" inputmode="numeric" pattern="[0-9]{4,8}" minlength="4" maxlength="8" autocomplete="current-password" required><button>Log in</button></form>
+            <details><summary>Use a simulated NFC card</summary><form id="card-login"><p class="small muted">Enter the card ID issued with your account. No reader is needed.</p><label for="card-id">Simulated card ID</label><input id="card-id" name="cardId" placeholder="SB-…" autocomplete="off" maxlength="15" required><button class="secondary">Simulate card tap</button></form></details>
+            <details id="registration"><summary>Create an account</summary><form id="register"><p class="small muted">Username: 3–24 letters, digits or underscores. PIN: 4–8 digits.</p><label for="new-username">New username</label><input id="new-username" name="username" pattern="[A-Za-z0-9_]{3,24}" minlength="3" maxlength="24" autocomplete="username" required><label for="new-pin">New PIN</label><input id="new-pin" name="pin" type="password" inputmode="numeric" pattern="[0-9]{4,8}" minlength="4" maxlength="8" autocomplete="new-password" required><button class="secondary">Create account</button></form></details>
+          </div>
+        </section>
+        <section class="panel checkout" aria-labelledby="checkout-title"><p class="eyebrow">ORDER & PAYMENT</p><h2 id="checkout-title">Your checkout</h2><p class="small muted">Payments are simulated. No card details or real charges.</p><div id="orders">Log in and choose a beverage to begin.</div></section>
+      </aside>
+    </div>
+  </main>
+  <dialog id="confirm-dialog" aria-labelledby="confirm-title"><h2 id="confirm-title">Confirm your order</h2><p id="confirm-description"></p><p class="small muted">Confirm this beverage and amount before proceeding to payment.</p><p id="confirm-error" class="blocked" role="alert" hidden></p><div class="button-row"><button id="confirm-order" data-action="confirm-order">Confirm order</button><button data-action="close-dialog" class="secondary">Go back</button></div></dialog>
+  <footer><span>SmartBrew · Classroom prototype</span><span>Local payment & machine simulation</span></footer>
+</body>
+</html>

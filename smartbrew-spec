@@ -1,0 +1,31 @@
+System description for all lab assignments
+System description for all lab assignments
+In labs 1, 2 and 3, all tasks refer to the same system description to illustrate the differences and similarities between the diagrams, as well as their interactions. A short description of a software system is provided, together with some minimum requirements for each task. Hence, these lab assignments leave you a lot of freedom to make your own design decisions, make sure to document them appropriately in the diagrams, for example using notes.
+
+System description: 
+In recent years, the internet of things (IoT) and artificial intelligence (AI) have transformed everyday household and office appliances into highly intelligent systems. SmartBrew AI is a state-of-the-art interactive coffee machine designed to revolutionize the user experience in modern corporate offices, premium lounges, and modern homes. Equipped with a high-resolution touchscreen interface, an integrated optical camera, and advanced connectivity modules, SmartBrew AI moves beyond traditional coffee dispensing.
+
+The primary goal of the system is to deliver a hyper-personalized beverage experience. By analyzing past user preferences, ordering history, and even real-time emotional cues via computer vision, SmartBrew AI crafts bespoke coffee recommendations. Additionally, the machine streamlines payments by offering a touchless, highly connected checkout process that integrates modern contactless cards and digital wallets. 
+
+ 
+
+Allow users to create an account, log in via credentials or NFC/card tap, and maintain personal preference profiles.
+ Automatically record every completed transaction, including beverage customization parameters (e.g., milk type, coffee strength, temperature, syrup shots).
+Enable users to save, modify, and name custom beverage recipes to their profile for one-touch ordering.
+Generate personalized drink recommendations based on time of day, weather data, and historical user choices.
+Use the embedded camera to analyze the user's facial expression/mood (e.g., tired, happy, stressed) to suggest tailored drink recipes (e.g., an extra espresso shot for a tired user).
+Reorder and highlight menu items on the touchscreen based on calculated recommendation scores.
+Provide an intuitive graphical interface to browse categories, inspect nutritional information, and customize drink recipes in real time.
+Prevent selection of beverages whose ingredients are currently depleted or below the minimum threshold.
+Support transactions via standard Credit/Debit cards (EMV chip/contactless), Mobile Digital Wallets (Apple Pay, Google Pay), and internal Prepaid Employee Cards.
+Provide users with the option to receive receipts via QR Code scan or email.
+Local LLM Agent (Optional / Modular Feature)
+Delegate user interaction and customization logic to a lightweight, locally hosted Large Language Model (LLM) running on the machine's embedded compute module.
+Allow users to request custom drinks using free-form natural language (e.g., "Give me something sweet with a kick, but low on dairy"), which the LLM translates into explicit machine instructions.
+Provide a secure administrative mode (accessible via a physical key, NFC master card, or technician pin) reserved for maintenance personnel.
+Allow technicians to register ingredient refills (e.g., adding milk, beans, cocoa, cups) and reset ingredient counters back to maximum capacity.
+Monitor liquid waste and coffee ground bin capacities, alerting technicians when disposal/emptying is required, and halting operations if bins overflow.
+Display real-time error messages (e.g., "Grinder Jammed", "Water Heater Fault", "Low Ingredient Threshold") both on an admin dashboard and as event logs for remote diagnostics.
+Facial images captured by the camera for mood detection must be processed entirely in memory (in-memory inference) and immediately discarded without being stored locally or transmitted to external servers..
+If network connection or external services (e.g., weather API, digital wallet processors) fail, the machine must gracefully fall back to basic manual ordering and offline card processing/cashless storage.
+ 

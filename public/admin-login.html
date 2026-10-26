@@ -1,0 +1,9 @@
+<!doctype html>
+<!-- Public maintenance sign-in form; the dashboard and its APIs require the resulting separate admin session. -->
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SmartBrew · Maintenance sign-in</title><link rel="stylesheet" href="/styles.css"><script src="/app.js" defer></script></head>
+<body data-page="admin-login">
+  <header><a class="brand" href="/">SmartBrew<span>YOUR DAILY COFFEE BREAK</span></a><nav aria-label="Main navigation"><a href="/">Beverage menu</a><a href="/admin-login.html" aria-current="page">Maintenance</a></nav></header>
+  <main class="auth"><p class="eyebrow">AUTHORIZED PERSONNEL</p><h1>Maintenance<br>sign-in.</h1><p class="muted">Use the separate technician PIN to access machine controls.</p><div id="notice" class="notice" role="status" aria-live="polite" hidden></div><section class="panel"><form id="admin-login"><label for="technician-pin">Technician PIN</label><input id="technician-pin" name="pin" type="password" inputmode="numeric" pattern="[0-9]{4,8}" minlength="4" maxlength="8" autocomplete="current-password" required><button>Enter admin mode</button></form></section><a class="back" href="/">Return to beverage menu</a></main>
+</body>
+</html>
