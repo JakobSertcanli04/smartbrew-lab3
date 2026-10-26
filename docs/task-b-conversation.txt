@@ -10,6 +10,16 @@ chat export separately to satisfy a request for the full generation conversation
 The exact model/version label should be recorded from the application/session;
 no unavailable version identifier is fabricated.
 
+CURRENT REPOSITORY CONTEXT
+The repository is now public. References below to private visibility describe
+the earlier publication step, before the student's later visibility change.
+The filenames comparision_shortlist.json (as originally typed) and
+comparison_shortlist.json refer to the earlier Task A input. Those files and the
+requirements directory were removed from the final repository. They are not
+runtime dependencies or part of the current source layout. The current feature
+mapping is docs/task-b-scope.md; README.md describes the final project structure.
+Historical user messages and assistant responses below retain their wording.
+
 USER — REQUESTED PREPARATION
 Task B: Code Generation & Execution
 Functionality Selection: Select a core set of 10 features/functionalities (not trivial) from the requirements elicited in Task A.

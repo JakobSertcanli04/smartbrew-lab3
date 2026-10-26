@@ -1,0 +1,303 @@
+SMARTBREW — USER INPUTS RELATED TO TASK C
+Date: 26 October 2026
+
+This file extracts the user messages available in this conversation that relate
+to repository management, source comments, README/setup guidance, testing
+instructions, and supporting documentation. Mixed Task B/C messages are marked.
+Original wording and spelling are retained; line wrapping/blank spacing is
+normalized. Labels and relevance explanations are editorial context, not part
+of the user's messages. Assistant replies and proposed prompts are excluded.
+
+This is a filtered user-input record, not the complete conversation. Pure Task A
+requirements-comparison and presentation requests are excluded. Historical
+messages are preserved even if later instructions changed the project.
+Earlier requirements filenames and local paths quoted below are historical
+inputs; they do not describe the final repository layout. The current feature
+mapping is docs/task-b-scope.md and the setup guide is README.md.
+
+======================================================================
+01 — IMPLEMENTATION REQUEST WITH DOCUMENTATION AND EXECUTION REQUIREMENTS
+Relevance: mixed Task B/C; source comments, project structure, README, setup
+commands and verification were requested within the implementation prompt.
+======================================================================
+
+Build a simple web-based SmartBrew prototype
+Use:
+- JavaScript
+- Node.js
+- Express
+- SQLite
+- HTML/CSS
+- Plain frontend JavaScript if needed
+- No React
+- No external APIs
+- Simulate payment and machine hardware behavior locally
+Implement exactly these 10 functionalities:
+1. Create account
+2. Login
+3. View beverage options
+4. Inspect nutritional values
+5. Place an order
+6. Pay for an order
+7. Enter admin mode
+8. Register waste disposal
+9. Monitor system status
+10. Update ingredient levels
+Requirements:
+- Users can register with username and PIN.
+- Usernames must be unique.
+- Users can log in and log out.
+- Invalid credentials must be rejected.
+- Beverage options must show name and price.
+- Each beverage must have nutritional information.
+- Logged-in users can place an order.
+- Payment must be simulated locally.
+- Successful payment should reduce ingredient levels and increase waste.
+- Orders must be blocked if required ingredients are unavailable.
+- Admin access must require separate authentication.
+- Normal users must not access admin pages.
+- Admin can view ingredient levels, waste level, warnings, and machine status.
+- Admin can reset waste after disposal.
+- Admin can refill ingredients to maximum capacity.
+Use SQLite for persistence.
+Seed the database with a few beverages such as:
+- Espresso
+- Cappuccino
+- Latte
+- Tea
+- Hot Chocolate
+Each beverage should include:
+- price
+- nutritional information
+- required ingredients
+Create a simple, clear interface suitable for demonstrating the system to a teacher.
+Use a straightforward project structure, for example:
+- app.js or server.js
+- package.json
+- README.md
+- db/ or database initialization logic
+- views/ or templates/
+- public/ for CSS and frontend JavaScript
+Use Express for routing and server-side logic.
+Use an appropriate SQLite package for Node.js.
+Every important function/method must include documentation describing:
+- purpose
+- input parameters
+- return/output values
+Before making changes, inspect the current project directory.
+Then:
+1. Explain briefly what you will create.
+2. Implement the application.
+3. Check for obvious errors.
+4. Run tests or basic verification if possible.
+5. Give me exact commands to install dependencies and start the app.
+Do not implement features outside these 10 functionalities.
+Do not leave TODO placeholders for core functionality.
+
+======================================================================
+02 — REQUEST FOR EXECUTION INSTRUCTIONS
+Relevance: README execution guide and environment setup.
+======================================================================
+
+npm.cmd install
+npm.cmd start how to start these
+
+======================================================================
+03 — REPORTED SETUP ERROR
+Relevance: setup/troubleshooting guidance for running from the correct folder.
+======================================================================
+
+npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open 'C:\Users\jakob\Downloads\lab3\package.json'
+npm error enoent This is related to npm not being able to find a file.
+npm error enoent
+npm error A complete log of this run can be found in: C:\Users\jakob\AppData\Local\npm-cache\_logs\2026-10-25T20_40_47_173Z-debug-0.log
+npm error code ENOENT
+npm error syscall open
+npm error path C:\Users\jakob\Downloads\lab3\package.json
+npm error errno -4058
+npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open 'C:\Users\jakob\Downloads\lab3\package.json'
+npm error enoent This is related to npm not being able to find a file.
+npm error enoent
+npm error A complete log of this run can be found in: C:\Users\jakob\AppData\Local\npm-cache\_logs\2026-10-25T20_40_48_291Z-debug-0.log
+PS C:\Users\jakob\Downloads\lab3>
+
+======================================================================
+04 — CLARIFICATION OF THE START COMMAND
+Relevance: explanation supporting the execution guide.
+======================================================================
+
+so npm starts the server
+
+======================================================================
+05 — SAVE THE PROMPTS AND STRATEGY
+Relevance: supporting documentation; mixed with Task A/B prompt-log obligations.
+======================================================================
+
+omit all of the prompts here into a text file so I can save it for later. also describe the prompt strategy
+
+======================================================================
+06 — EDIT THE DOCUMENTATION'S FOCUS
+Relevance: supporting documentation editing; mixed with Task A JSON structuring.
+======================================================================
+
+remove everything related to the word table inside the document and you should specify that I wanted to create a json format: Like: "Could you structure this file into json fields"
+
+======================================================================
+07 — REMOVE THE EARLIER APPLICATION
+Relevance: historical project-file organization before the fresh implementation.
+======================================================================
+
+Alright, delete the app. every file related to it
+
+======================================================================
+08 — INITIAL PARTIAL TECHNOLOGY/SCOPE ANSWER
+Relevance: mixed Task B/C; technology and selected functions for documentation.
+======================================================================
+
+1. comparision_shortlist.json 2. Create account
+
+Login
+
+View beverage options
+
+Inspect nutritional values
+
+Place order
+
+Pay for order
+
+Enter admin mode
+
+Register waste disposal
+
+Monitor system
+
+Update ingredient levels
+
+3. Sqlite, javascript
+
+======================================================================
+09 — COMPLETE TECHNOLOGY, INTERFACE AND ENVIRONMENT ANSWER
+Relevance: mixed Task B/C; operating system, dependencies, scope and constraints
+used in the README and demonstration instructions.
+======================================================================
+
+1. comparision_shortlist.json 2. Create account
+
+Login
+
+View beverage options
+
+Inspect nutritional values
+
+Place order
+
+Pay for order
+
+Enter admin mode
+
+Register waste disposal
+
+Monitor system
+
+Update ingredient levels
+
+3. Sqlite, javascript 4. a web application interface 5. You may simulate it but remember to do it within the boundaries of the selected features we agreed on. 6. Win11 7. Not as I know
+
+======================================================================
+10 — REQUEST FOR MAINTENANCE LOGIN GUIDANCE
+Relevance: GUI execution steps and demonstration credentials in the README.
+======================================================================
+
+Where do I enter the pin for maintenance
+
+======================================================================
+11 — EXPLICIT SOURCE DOCUMENTATION REQUIREMENTS
+Relevance: directly specifies Task C's comments and function documentation.
+======================================================================
+
+Make sure you follow this: Code Documentation & Comments:
+
+All source code must be documented with clear comments. At a minimum, every function/method must include:
+
+Description of purpose
+
+Expected Input parameters
+
+Expected Output / Return values
+
+======================================================================
+12 — EXPLICIT README AND INDEPENDENT-MACHINE REQUIREMENTS
+Relevance: directly specifies Task C's README and reproducible setup.
+======================================================================
+
+alrgiht, follow these instructions: README Document:
+
+The repository must include a clear README.md containing:
+
+System Overview: Brief description of the project.
+
+Environment & Prerequisites: Compiler/runtime versions, libraries, and external dependencies required to run the code.
+
+Execution Guide: Step-by-step instructions on how to build, run, and test the 10 functionalities (whether via command-line arguments, scripts, CLI, or GUI navigation steps).
+
+General Information & Constraints
+You may use any programming language, framework, or IDE. However, remember that the evaluation takes place on an independent machine. Your project must include clear environment setup instructions or configuration files (e.g., requirements.txt, package.json, pom.xml, or Dockerfile) so it can be built and run without version mismatch issues.
+
+======================================================================
+13 — REQUEST FOR MUTATION TESTING
+Relevance: mixed Task B/C; test execution and assessment documentation.
+======================================================================
+
+can you write mutants to verify how strong these test cases are
+
+======================================================================
+14 — STRENGTHEN TESTS AND PUBLISH TO GITHUB
+Relevance: repository hosting and verified code/test deliverables.
+======================================================================
+
+fix these issues and then load up the code to github accordinbg to the instruction.
+
+======================================================================
+15 — GITHUB ACCOUNT
+Relevance: identifies the repository owner for publication.
+======================================================================
+
+JakobSertcanli04
+
+======================================================================
+16 — CLEAN THE REPOSITORY CONTENTS
+Relevance: repository organization and retained documentation/deliverables.
+======================================================================
+
+remove everyting, only keep the mutations files documentation and the app. According to the instruction
+
+======================================================================
+17 — INSTRUCTOR COLLABORATOR INVITATION
+Relevance: assignment repository-access requirement.
+======================================================================
+
+riccardoRubei invite him as a collaborator
+
+======================================================================
+18 — PUBLIC REPOSITORY VISIBILITY
+Relevance: GitHub repository management and evaluator access.
+======================================================================
+
+the repo should be public
+
+======================================================================
+19 — THIS TASK C INPUT-EXTRACTION REQUEST
+Relevance: documentation of the user's Task C interaction.
+======================================================================
+
+extract every input I have done which correlates with task C
+
+======================================================================
+END OF EXTRACT
+======================================================================
+
+The direct Task C instructions are entries 11–12 and 14–18. The other entries
+provide supporting documentation, setup, testing or repository context. This
+record does not invent model/version information, assistant responses or user
+messages from sessions that are unavailable here.

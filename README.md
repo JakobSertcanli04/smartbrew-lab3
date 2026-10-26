@@ -1,6 +1,6 @@
 # SmartBrew — Task B prototype
 
-Submission repository: [JakobSertcanli04/smartbrew-lab3](https://github.com/JakobSertcanli04/smartbrew-lab3).
+Public submission repository: [JakobSertcanli04/smartbrew-lab3](https://github.com/JakobSertcanli04/smartbrew-lab3).
 
 ## System overview
 
@@ -28,16 +28,16 @@ No separate compiler, frontend build tool, Python, C/C++ toolchain or database s
 
 Install Node.js 24.16.0 with npm using a Windows installer or your Node version manager. Open a new PowerShell window after installation so the commands are available on PATH.
 
-Clone the submitted Git repository, or download and extract its ZIP. In File Explorer, open the project folder containing **both `package.json` and `package-lock.json`**, then open PowerShell/Terminal in that folder. Your extraction location can be anywhere; the application does not require the author's username or Downloads path.
+Clone the submitted Git repository, or download and extract its ZIP. In File Explorer, open the project folder containing **both `package.json` and `package-lock.json`**, then open PowerShell/Terminal in that folder. Use a writable directory of your choice.
 
-If Git is installed and your GitHub account has access to the repository:
+If Git is installed, clone the public repository without signing in to GitHub:
 
 ```powershell
 git clone https://github.com/JakobSertcanli04/smartbrew-lab3.git
 cd smartbrew-lab3
 ```
 
-Git is optional when using a downloaded source ZIP. For a private repository, the instructor must accept the collaborator invitation before accessing the source.
+Git is optional when using a downloaded source ZIP. The public source is accessible without accepting a collaborator invitation.
 
 If PowerShell is elsewhere, change to the actual extracted directory. Replace the example path below with your own:
 
@@ -95,18 +95,6 @@ Use a normal browser window for the customer and an InPrivate/incognito window f
 ### 7. Stop the application
 
 Press **Ctrl+C** in the server terminal. The HTTP listener stops and SQLite is closed. Restarting with `npm.cmd start` reuses the saved database.
-
-### Quick commands for the author's existing workspace
-
-These commands apply only when the project is already at the original local path. Evaluators should follow the location-independent steps above.
-
-```powershell
-cd C:\Users\jakob\Downloads\lab3\smartbrew-lab3
-npm.cmd ci
-npm.cmd run check
-npm.cmd test
-npm.cmd start
-```
 
 ## Troubleshooting
 

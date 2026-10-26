@@ -10,6 +10,12 @@ The example prompts are paraphrased for clarity and are not presented as a
 verbatim transcript. The main code-generation prompt is reproduced from the
 conversation, with line wrapping normalized.
 
+Historical context: requirements-file names and local paths in the examples
+describe earlier work, not the final repository layout or required install
+location. The Task A source artifacts are no longer included. Use
+docs/task-b-scope.md for the current feature mapping and README.md for the
+current project structure and location-independent execution instructions.
+
 The original prompt that produced ai_requirements.json is not visible in this
 conversation and is not reconstructed. Record the actual model names and
 versions from the relevant application/session records; the artifacts do not
