@@ -166,3 +166,15 @@ The twenty-five-test suite passed. A complete second run caught all forty
 mutants (100%), with no survivors, invalid changes, timeouts or runner errors.
 The real backend and test source remained unchanged during this assessment.
 The initial 31/40 result and its original tests remain archived separately.
+
+USER — REPOSITORY CLEANUP
+remove everyting, only keep the mutations files documentation and the app. According to the instruction
+
+CLEANUP SUMMARY — NOT A VERBATIM RESPONSE
+The app, tests, mutation tooling/results and Task B/C documentation were retained.
+The edited prompt strategy was moved into docs/prompts-and-strategy.txt.
+Task A source artifacts, comparison drafts and original assignment copies were
+removed from the current project tree, along with generated dependencies,
+cache and runtime database files. References to earlier requirement files in
+this conversation record are historical; those files are not app dependencies.
+The repository history preserves earlier committed artifacts separately.

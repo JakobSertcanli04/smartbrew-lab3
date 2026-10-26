@@ -1,6 +1,6 @@
 # Task B — Selected scope and traceability
 
-Source: `requirements/comparison_shortlist.json`, the finalized baseline-shaped Task A artifact. This prototype implements the selected ten functionalities, rather than all thirty requirements in that artifact. Existing Task A files are unchanged.
+The ten functionalities below were selected from the finalized Task A requirements. The original requirement IDs are retained here for traceability. Task A source artifacts and comparison drafts are not included in the current app repository; this document records the selected scope without requiring those files to run or test the prototype.
 
 | # | Selected functionality | Relevant Task A requirements | Implemented acceptance behavior |
 |---|---|---|---|

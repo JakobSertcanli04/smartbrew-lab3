@@ -241,7 +241,9 @@ reports/mutation/report.md      Generated mutation assessment
 reports/mutation/report.json    Machine-readable mutation evidence
 docs/task-b-scope.md            Ten-feature mapping and scope decisions
 docs/task-b-conversation.txt    Available Task B prompt/conversation record
-requirements/                  Existing Task A sources; unchanged
+docs/prompts-and-strategy.txt   Edited prompt record and prompting strategy
 ```
 
 Every project-defined JavaScript function and callback has a documentation comment describing its purpose, expected parameters (or explicitly no parameters), and return value or observable output. This includes route handlers, event handlers, rendering callbacks and test callbacks. See [the documentation guide](docs/code-documentation.md) for coverage and conventions, [the scope mapping](docs/task-b-scope.md) for exact Task A IDs and prototype boundaries, and [the conversation record](docs/task-b-conversation.txt) for generation prompts available in this session. Preserve the full chat export separately for submission.
+
+This repository contains the executable prototype, tests, mutation definitions/results and supporting documentation. Task A source files, comparison drafts and assignment copies are not included in the current project tree. Historical source references in the prompt record describe the earlier requirements work; they are not runtime dependencies. Keep any Task A report/artifacts separately for the assignment's Canvas submission.
